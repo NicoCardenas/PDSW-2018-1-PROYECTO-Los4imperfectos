@@ -6,49 +6,43 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Login</title>
-        <style type="text/css">
-            body {
-                background: #c10000;
-                text-align: center;
-                margin: auto;
-            }
-            img {
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-                width: 40%;
-            }
-            div {
-                margin: auto;
-                width: 50%;
-                background-color: #970606;
-                border-radius: 15px;
-                padding: 15px;
-            }
-            div > form > label{
-                font-family: Apple Chancery;
-                font-size: 15px;
-            }
-        </style>        
+    <title>Login</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>    
 </h:head>
-<h:body id="back">
-    <h1>Login</h1>
-    <div>
+<h:body>
+    <div class="title"><h1>Login</h1></div>
+    <div class="center">
     <h:form id="login_form">
         <img src="img/login.png" alt="Log Icon" />
         <br></br>
-        <p:outputLabel value="Mail " />
+        <p:outputLabel value="Mail " class="subtitle"/>
         <br></br>
-        <p:inputText value="#{loginBean.mail}" required="true"/>
-        <br></br> 
+        <div class="input">
+            <p:inputText value="#{loginBean.mail}" required="true"/>
+        </div>        
         <br></br>
-        <p:outputLabel value="Password " style="font-family: Apple Chancery" />
+        <p:outputLabel value="Password " class="subtitle" />
         <br></br>
-        <p:inputText type="password" value="#{loginBean.password}" />
+        <div class="input">
+            <p:inputText type="password" value="#{loginBean.password}"/>
+        </div>        
         <br></br>
-        <br></br>
-        <p:commandButton update="login_form" value="Login" actionListener="#{loginBean.autenticacion()}"/>
+        <div class="col-12 text-center">
+            <p:commandButton class="btn btn-default" update="login_form" value="Login" actionListener="#{loginBean.autenticacion()}" />
+        </div>
+        <div class="alert alert-danger" role="alert" style="display: none">
+            This is a danger alert—check it out!
+        </div>
     </h:form>
     </div>
 </h:body>    

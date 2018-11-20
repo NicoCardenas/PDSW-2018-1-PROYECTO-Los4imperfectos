@@ -6,12 +6,11 @@ import edu.eci.pdsw.services.InitiativeBankServices;
 import java.io.IOException;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
-
+@SuppressWarnings("deprecation")
 @ManagedBean(name = "loginBean")
 @SessionScoped  
 public class LoginBean extends BasePageBean{
@@ -30,17 +29,18 @@ public class LoginBean extends BasePageBean{
     public void autenticacion() throws IOException, InitiativeBankException {
         User usuarioTemp = new User();
         try {
-            System.out.println("hola estoy dentro");
             usuarioTemp = initiativeBankServices.consultarUsuario(mail);
-            System.out.println(usuarioTemp.toString());
+            //System.out.println(usuarioTemp.toString());
             if (password.equals(usuarioTemp.getContrasenia())) {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("menuPrincipal.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("intencion.xhtml");
             } else {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Contraseña incorrecto.", "Ingrese la contraseña de nuevo."));
+                FacesContext.getCurrentInstance().addMessage(mail, new  FacesMessage(FacesMessage.SEVERITY_ERROR, mail, mail));
+                //FacesContext.getCurrentInstance().addMessage("Contraseña incorrecta", new FacesMessage("Contraseña incorrecta o usuario incorrecto"));
+                //FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Contraseña incorrecto.", "Ingrese la contraseña de nuevo."));
             }
         }catch (InitiativeBankException ex) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, ex.getMessage(), "Cree un usuario."));
-        }    
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, ex.getMessage(), "Cree un usuario."));            
+        }
     }
     
     public void print(){
@@ -53,7 +53,7 @@ public class LoginBean extends BasePageBean{
     }
 
     public void setMail(String mail) {
-        System.out.println(mail);
+        //System.out.println(mail);
         this.mail = mail;
     }
 
@@ -64,5 +64,5 @@ public class LoginBean extends BasePageBean{
     public void setPassword(String password) {
         this.password = password;
     }    
-    
+     
 }

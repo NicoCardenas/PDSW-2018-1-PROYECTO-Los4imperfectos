@@ -24,7 +24,7 @@ public class InitiativeBankServicesImpl implements InitiativeBankServices {
         try {
             return userDAO.consultaUser(mail);
         } catch (PersistenceException ex) {
-            throw new InitiativeBankException(ex.getMessage(), ex);
+            throw new InitiativeBankException(ex.getMessage());
         }
     }
 

@@ -26,8 +26,7 @@
             title
         FROM intention
     </select>
-    
-    
+        
     <insert parameterType="map" id="addIntention">
     	INSERT INTO iniciativas values(#{i.id},#{i.estado},#{i.autor.documento},#{i.nombre},#{i.descripcion},#{i.fechaCreacion}, string_to_array(#{i.palabrasClave},','),#{i.area});   	
     </insert>

@@ -26,10 +26,18 @@
             title
         FROM intention
     </select>
-        
-    <insert parameterType="map" id="addIntention">
-    	INSERT INTO iniciativas values(#{i.id},#{i.estado},#{i.autor.documento},#{i.nombre},#{i.descripcion},#{i.fechaCreacion}, string_to_array(#{i.palabrasClave},','),#{i.area});   	
-    </insert>
+    
+    <select id="search" parameterMap="map" resultMap="IntentionResult">
+        SELECT 
+            title,
+            date_of_creation,
+            "content",
+            state,
+            tag
+        FROM intention
+        join t_intencion_palabra on intention.user_id = t_intencion_palabra.intention_id
+        join t_palabras on t_palabras.id = t_intencion_palabra.t_palabras_id
+    </select>
     
   </mapper>
 

@@ -23,7 +23,7 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>faces/inicio.xhtml</welcome-file>
+        <welcome-file>faces/login.xhtml</welcome-file>
     </welcome-file-list>
     <listener>
         <listener-class>edu.eci.pdsw.guice.GuiceContextListener</listener-class>

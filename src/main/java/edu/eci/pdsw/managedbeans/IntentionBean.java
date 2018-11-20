@@ -28,4 +28,8 @@ public class IntentionBean extends BasePageBean{
             throw e;
         }
     }
+    
+    public Intention getSearch() {
+        return null;
+    }
 }

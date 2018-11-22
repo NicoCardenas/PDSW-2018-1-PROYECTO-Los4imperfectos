@@ -9,6 +9,6 @@ import org.apache.ibatis.annotations.Param;
 public interface IntentionMapper {
 
     public List<Intention> consultarAll();
-    public Intention searchIntention() throws PersistenceException;
+    public Intention searchIntention(@Param("palabra") String palabra) throws PersistenceException;
 
 }

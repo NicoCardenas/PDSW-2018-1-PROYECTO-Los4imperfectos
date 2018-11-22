@@ -25,11 +25,11 @@ public class MyBatisIntentionDAO implements IntentionDAO{
     }
 
     @Override
-    public Intention search() throws PersistenceException {
+    public Intention search(String palabra) throws PersistenceException {
         try {
-            return intentionMapper.searchIntention();
+            return intentionMapper.searchIntention(palabra);
         } catch (Exception e) {
-            throw new PersistenceException("", e);
+            throw new PersistenceException("No existe una intencion con esa palabra clave", e);
         }
     }
 

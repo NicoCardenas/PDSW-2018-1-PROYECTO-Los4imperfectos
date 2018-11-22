@@ -31,10 +31,14 @@
                     </p:column>                                                            
                 </p:dataTable>
             </p:tab>
-            <p:tab title="Search">                
-                <h:outputText value="Search." />
-                <p:inputText />
-                <p:dataTable id="search_table" var="intention" value="#{loginBean}">
+            <p:tab title="Search">
+                <h:form id="form_search" >
+                    <h:outputText value="Palabra Clave: " />
+                    <p:inputText value="#{intentionBean.searchVal}"/>
+                    <p:commandButton update="form_search" value="Search"/>
+                </h:form>
+                <br></br>           
+                <p:dataTable id="search_table" var="intention" value="#{intentionBean.search}">
                     <p:column headerText="Titulo">
                         <h:outputText value="#{intention.titulo}" />
                     </p:column>

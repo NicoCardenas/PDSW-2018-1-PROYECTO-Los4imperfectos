@@ -12,6 +12,7 @@
         <result property='estado' column='state'/>        
         <result property='descripcion' column='content'/>     
         <result property='fechaCreacion' column='date_of_creation'/>
+        <collection property="palabrasClave" ofType="java.lang.String"></collection>
         <!--<association property='autor' javaType="User" resultMap='pdsw.project.dao.mybatis.mappers.UserMapper.UserResult'/>
         <collection property="palabrasClave" ofType="java.lang.String"></collection>        
         <collection property="comentarios" ofType="Comentario" resultMap="pdsw.project.dao.mybatis.mappers.CommentMapper.CommentResult"></collection>-->
@@ -25,6 +26,8 @@
             date_of_creation,
             title
         FROM intention
+        join t_intencion_palabra on intention.user_id = t_intencion_palabra.intention_id
+        join t_palabras on t_palabras.id = t_intencion_palabra.t_palabras_id
     </select>
     
     <select id="search" parameterMap="map" resultMap="IntentionResult">

@@ -16,6 +16,8 @@ public class IntentionBean extends BasePageBean{
     
     @Inject
     private InitiativeBankServices initiativeBankServices;
+    
+    private String searchVal;
 
     public IntentionBean() {
         
@@ -29,7 +31,20 @@ public class IntentionBean extends BasePageBean{
         }
     }
     
-    public Intention getSearch() {
-        return null;
+    public Intention getSearch() throws InitiativeBankException {
+        try {
+            return initiativeBankServices.consultaIntencion(searchVal);
+        } catch (InitiativeBankException e) {
+            throw e;
+        }
     }
+
+    public String getSearchVal() {
+        return searchVal;
+    }
+
+    public void setSearchVal(String searchVal) {
+        System.out.println("Palabra a buscar: "+searchVal);
+        this.searchVal = searchVal;
+    }        
 }

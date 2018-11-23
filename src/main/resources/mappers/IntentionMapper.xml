@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE mapper
@@ -43,52 +42,3 @@
     </select> 
     
   </mapper>
-
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-<mapper namespace="edu.eci.pdsw.persistence.mybatisimpl.mappers.IntentionMapper">
-    
-    <resultMap type='Intention' id='IntentionResult'>
-        <id property='id' column='id'/>
-        <result property='titulo' column='title' />
-        <result property='estado' column='state'/>        
-        <result property='descripcion' column='content'/>     
-        <result property='fechaCreacion' column='date_of_creation'/>
-        <collection property="palabrasClave" ofType="java.lang.String"></collection>
-        <!--<association property='autor' javaType="User" resultMap='pdsw.project.dao.mybatis.mappers.UserMapper.UserResult'/>
-        <collection property="palabrasClave" ofType="java.lang.String"></collection>        
-        <collection property="comentarios" ofType="Comentario" resultMap="pdsw.project.dao.mybatis.mappers.CommentMapper.CommentResult"></collection>-->
-    </resultMap>
-    
-    <select id="consultarAll" resultMap="IntentionResult">
-        SELECT 
-            id,
-            state,
-            content,
-            date_of_creation,
-            title
-        FROM intention
-        join t_intencion_palabra on intention.user_id = t_intencion_palabra.intention_id
-        join t_palabras on t_palabras.id = t_intencion_palabra.t_palabras_id
-    </select>
-    
-    <select id="search" parameterMap="map" resultMap="IntentionResult">
-        SELECT 
-            title,
-            date_of_creation,
-            "content",
-            state,
-            tag
-        FROM intention
-        join t_intencion_palabra on intention.user_id = t_intencion_palabra.intention_id
-        join t_palabras on t_palabras.id = t_intencion_palabra.t_palabras_id
-    </select>
-    
-  </mapper>
-
->>>>>>> 10903e5af9319301ce85c168c8e9c5efa2ad3ee7

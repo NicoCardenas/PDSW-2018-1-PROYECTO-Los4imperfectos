@@ -20,7 +20,9 @@
             u.deparment_area as areaDepartment,
             u.pass as contrasenia
         FROM usuario AS u
-        WHERE email = #{mail}
+        <if test="mail != null">
+            WHERE email = #{mail}
+        </if>       
     </select>
     
     <delete id="deleteAll">

@@ -35,5 +35,16 @@ public class InitiativeBankServicesImpl implements InitiativeBankServices {
         } catch (PersistenceException e) {
             throw new InitiativeBankException(e.getMessage(), e);
         }        
-    }           
+    }
+
+    @Override
+    public List<Intention> consultaIntencion(String palabra) throws InitiativeBankException {
+        try {
+            return intentionDAO.search(palabra);
+        } catch (PersistenceException e) {
+            throw new InitiativeBankException(e.getMessage(), e);
+        } 
+    }
+    
+    
 }

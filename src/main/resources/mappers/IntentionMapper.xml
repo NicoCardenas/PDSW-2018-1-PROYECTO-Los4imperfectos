@@ -12,24 +12,34 @@
         <result property='estado' column='state'/>        
         <result property='descripcion' column='content'/>     
         <result property='fechaCreacion' column='date_of_creation'/>
-        <!--<association property='autor' javaType="User" resultMap='pdsw.project.dao.mybatis.mappers.UserMapper.UserResult'/>
-        <collection property="palabrasClave" ofType="java.lang.String"></collection>        
-        <collection property="comentarios" ofType="Comentario" resultMap="pdsw.project.dao.mybatis.mappers.CommentMapper.CommentResult"></collection>-->
+        <collection property="palabrasClave" column="tag" ofType="String" javaType="ArrayList" notNullColumn="id"/>     
     </resultMap>
     
     <select id="consultarAll" resultMap="IntentionResult">
         SELECT 
-            id,
+            intention.id as id,
             state,
             content,
             date_of_creation,
-            title
+            title,
+            tag
         FROM intention
+        join t_intencion_palabra on intention.user_id = t_intencion_palabra.intention_id
+        join t_palabras on t_palabras.id = t_intencion_palabra.t_palabras_id
     </select>
-        
-    <insert parameterType="map" id="addIntention">
-    	INSERT INTO iniciativas values(#{i.id},#{i.estado},#{i.autor.documento},#{i.nombre},#{i.descripcion},#{i.fechaCreacion}, string_to_array(#{i.palabrasClave},','),#{i.area});   	
-    </insert>
+    
+    <select id="search" parameterType="String" resultMap="IntentionResult">
+        SELECT
+            intention.id,
+            state,
+            content,
+            date_of_creation,
+            title,
+            tag
+        FROM intention
+        join t_intencion_palabra on intention.user_id = t_intencion_palabra.intention_id
+        join t_palabras on t_palabras.id = t_intencion_palabra.t_palabras_id
+    </select> 
     
   </mapper>
 

@@ -11,13 +11,12 @@ public class Intention implements Serializable{
     private String titulo;
     private String descripcion;
     private Date fechaCreacion;
-    private String tags;
     private User autor;
-    private String palabrasClave;
+    private ArrayList<String> palabrasClave;
     private ArrayList<Comment> comments;
     private String area; 
 
-    public Intention(int id, String estado, String titulo, String descripcion, Date fechaCreacion,ArrayList<Comment> comentarios,String palabrasClave, User autor,String area) {
+    public Intention(int id, String estado, String titulo, String descripcion, Date fechaCreacion, ArrayList<Comment> comentarios, ArrayList<String> palabrasClave, User autor,String area) {
         this.id = id;
         this.estado = estado;
         this.titulo = titulo;
@@ -27,10 +26,11 @@ public class Intention implements Serializable{
         this.comments = comentarios;
         this.autor = autor;
         this.area = area;        
-    }    
+    }
 
     public Intention() {
-        comments = new ArrayList<Comment>();
+        comments = new ArrayList<>();
+        palabrasClave = new ArrayList<>();
     }
     
     public void setId(int id) {
@@ -76,17 +76,32 @@ public class Intention implements Serializable{
     public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
-    
 
-    public String getPalabrasClave() {
+    public User getAutor() {
+        return autor;
+    }
+
+    public void setAutor(User autor) {
+        this.autor = autor;
+    }
+
+    public ArrayList<String> getPalabrasClave() {
         return palabrasClave;
     }
 
-    public void setpalabrasClave(String palabrasClave) {
+    public void setPalabrasClave(ArrayList<String> palabrasClave) {
+        System.out.println("entro una palabra clave");
         this.palabrasClave = palabrasClave;
     }
-    
-    
+
+    public ArrayList<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(ArrayList<Comment> comments) {
+        this.comments = comments;
+    }
+            
     public ArrayList<Comment> getComentarios(){
     	return comments;
     }

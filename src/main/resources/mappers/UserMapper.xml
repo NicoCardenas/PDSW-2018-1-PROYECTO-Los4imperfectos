@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
@@ -28,4 +29,34 @@
     <delete id="deleteAll">
         delete from usuario
     </delete>
+=======
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="edu.eci.pdsw.persistence.mybatisimpl.mappers.UserMapper">
+
+    <resultMap type='User' id='UserResult'>             
+        <result property='full_name' column='full_name'/>
+        <result property='email' column='useremail'/>
+        <result property='areaDepartment' column='areaDepartment'/>
+        
+        <result property="contrasenia" column="contrasenia"/>
+    </resultMap>
+
+    <select id='consultarUsuario' parameterType='map' resultMap='UserResult'>
+        SELECT
+            u.email as useremail,
+            u.full_name as full_name,
+            u.deparment_area as areaDepartment,
+            u.pass as contrasenia
+        FROM usuario AS u
+        WHERE email = #{mail}
+    </select>
+    
+    <delete id="deleteAll">
+        delete from usuario
+    </delete>
+>>>>>>> 10903e5af9319301ce85c168c8e9c5efa2ad3ee7
 </mapper>

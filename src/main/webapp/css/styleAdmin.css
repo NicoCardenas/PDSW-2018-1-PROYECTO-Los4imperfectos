@@ -1,0 +1,87 @@
+body {
+    background: rgb(36,0,0);
+    background: radial-gradient(circle, rgba(36,0,0,1) 0%, rgba(121,9,9,1) 53%, rgba(255,0,0,1) 100%);
+}
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+}
+.center {
+    margin: auto;
+    width: 50%;
+    /*background: rgb(224,124,124);
+    background: radial-gradient(circle, rgba(224,124,124,0.5) 0%, rgba(121,9,9,0.5) 100%);*/    
+    border-radius: 15px;
+    padding: 15px;
+    position: relative;
+}
+.title {
+    margin: auto;
+    font-family: sans-serif;
+    font-size: 5%;
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    color: white;
+}
+.subtitle{
+    font-family: cursive;
+    font-size: 25px;
+    color: white;
+    text-align: center;
+    margin: auto;
+    width: 100%;
+}
+#login_form {
+    margin: auto;
+}
+
+.input {    
+    margin-top: 15px;
+}
+
+.input > input {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    box-shadow: 0 0 20px 2px #000;
+    color: black;
+}
+
+.input > span > input {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    box-shadow: 0 0 20px 2px #000;
+    color: black;
+}
+
+.input > span {
+    position: relative;
+    display: block;
+}
+
+.center-block {
+  float:none;
+}
+
+.butn{
+     display: inline; 
+     margin: 10px;
+     margin-left: 20px;
+     margin-right: 20px;
+     height:100px;
+     width:100px;
+     position: relative;
+     
+}
+
+button {
+    margin: auto;
+}
+
+div > button {
+    display: inline;
+}

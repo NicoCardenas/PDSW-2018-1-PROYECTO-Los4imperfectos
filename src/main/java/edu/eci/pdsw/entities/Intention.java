@@ -86,6 +86,7 @@ public class Intention implements Serializable{
     }
 
     public ArrayList<String> getPalabrasClave() {
+        
         return palabrasClave;
     }
 

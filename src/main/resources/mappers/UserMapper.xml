@@ -23,21 +23,22 @@
         pass,
         t_tipos."type"
         from usuario
-            join t_tipos on usuario.t_tipos_user_id = t_tipos.user_id
+        join t_tipos on usuario.t_tipos_user_id = t_tipos.user_id
     </select>
     
-    <select id='consultarUsuario' parameterType='map' resultMap='UserResult'>
+    <select id='consultarUsuario' parameterType='String' resultMap='UserResult'>
         SELECT
-            u.id as id,
-            u.full_name,
-            u.email,
-            u.deparment_area,
-            u.pass,
+            usuario.id as id,
+            full_name,
+            email,
+            deparment_area,
+            pass,
             t_tipos."type"
-        FROM usuario AS u
+        FROM usuario
+        join t_tipos on usuario.t_tipos_user_id = t_tipos.user_id
         <if test="mail != null">
             WHERE email = #{mail}
-        </if>       
+        </if>
     </select>
     
     <delete id="deleteAll">

@@ -32,7 +32,9 @@ public class MyBatisUserDAO implements UserDAO {
     @Override
     public User consultaUser(String mail) throws PersistenceException{
         try {
+            System.out.println("llego a dao");
             User temp = userMapper.consultarUsuario(mail);
+            System.out.println(temp);
             if (temp == null){
                 throw new PersistenceException("No existe ningun usuario con el correo: " + mail);
             }

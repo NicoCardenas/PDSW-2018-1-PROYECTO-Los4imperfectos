@@ -29,8 +29,9 @@ public class LoginBean extends BasePageBean{
     public void autenticacion() throws IOException, InitiativeBankException {
         User usuarioTemp = new User();
         try {
+            System.out.println("entro: ");
             usuarioTemp = initiativeBankServices.consultarUsuario(mail);
-            //System.out.println(usuarioTemp.toString());
+            System.out.println(usuarioTemp.toString());
             if (password.equals(usuarioTemp.getContrasenia())) {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("intencion.xhtml");
             } else {
@@ -53,7 +54,7 @@ public class LoginBean extends BasePageBean{
     }
 
     public void setMail(String mail) {
-        //System.out.println(mail);
+        System.out.println(mail);
         this.mail = mail;
     }
 

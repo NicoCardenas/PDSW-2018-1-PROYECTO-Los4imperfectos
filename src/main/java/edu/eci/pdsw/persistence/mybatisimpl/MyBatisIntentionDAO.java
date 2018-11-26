@@ -19,7 +19,6 @@ public class MyBatisIntentionDAO implements IntentionDAO{
     public List<Intention> consultaAll() throws PersistenceException {
         try {
             List<Intention> listaPrueba = intentionMapper.consultarAll();
-            System.out.println(listaPrueba);
             return intentionMapper.consultarAll();
             
         } catch (Exception e) {

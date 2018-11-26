@@ -5,21 +5,22 @@
   
 <mapper namespace="edu.eci.pdsw.persistence.mybatisimpl.mappers.UserMapper">
 
-    <resultMap type='User' id='UserResult'>             
+    <resultMap type='User' id='UserResult'>          
+        <id property='id' column='id'/>   
         <result property='full_name' column='full_name'/>
-        <result property='email' column='useremail'/>
-        <result property='areaDepartment' column='areaDepartment'/>
-        
-        <result property="contrasenia" column="contrasenia"/>
+        <result property='email' column='email'/>
+        <result property='areaDepartment' column='deparment_area'/>
+        <result property="contrasenia" column='pass'/>
+        <result property="tipoUsuario" column='type'/>
     </resultMap>
     
     <select id="consultarUsuarios" resultMap="UserResult">
     select
-        email,
+        usuario.id as id,
         full_name,
+        email,
         deparment_area,
         pass,
-        t_tipos_user_id,
         t_tipos."type"
         from usuario
             join t_tipos on usuario.t_tipos_user_id = t_tipos.user_id
@@ -27,10 +28,12 @@
     
     <select id='consultarUsuario' parameterType='map' resultMap='UserResult'>
         SELECT
-            u.email as useremail,
-            u.full_name as full_name,
-            u.deparment_area as areaDepartment,
-            u.pass as contrasenia
+            u.id as id,
+            u.full_name,
+            u.email,
+            u.deparment_area,
+            u.pass,
+            t_tipos."type"
         FROM usuario AS u
         <if test="mail != null">
             WHERE email = #{mail}

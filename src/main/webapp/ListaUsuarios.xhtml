@@ -13,7 +13,7 @@
         <p:tabView>
             <p:tab title="List all">
                 <center><h1>Lista de usuarios</h1></center>
-                <p:dataTable id="intention_table" var="intention" value="#{usuariosBean.consultAll}">	
+                <p:dataTable id="intention_table" var="user" value="#{usuariosBean.consultAll}">	
                    
                     <p:column headerText="Nombre de usuario">
                         <h:outputText value="#{user.full_name}" />
@@ -24,17 +24,8 @@
                     </p:column>
 
                     <p:column headerText="Tipo de usuario">
-                        <h:outputText value="#{user.}" />
-                    </p:column>
-                    
-                    <p:column headerText="Palabras Claves">
-                        <p:dataTable id="intention_table" var="palabra" value="#{intention.palabrasClave}">
-                            <p:column headerText="Tag">
-                                <h:outputText value="#{palabra}" />
-                            </p:column>
-                        </p:dataTable> 
-                    </p:column>
-                                       
+                        <h:outputText value="#{user.tipoUsuario}" />
+                    </p:column>                                       
                 </p:dataTable>
             </p:tab>
             <p:tab title="Search">

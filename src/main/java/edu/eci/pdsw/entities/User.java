@@ -1,27 +1,39 @@
 package edu.eci.pdsw.entities;
 
 public class User {
+    private int id;
     private String full_name;
     private String email;
     private String areaDepartment;
     private Intention intencion;
     private String contrasenia;
+    private String tipoUsuario;
     
     
     
     
     
-    public User(String full_name, String email, String areaDepartment, Intention intencion, String contrasenia) {
+    public User(int id,String full_name, String email, String areaDepartment, Intention intencion, String contrasenia, String tipoUsuarios) {
+        this.id = id;
         this.full_name = full_name;
         this.email = email;
         this.areaDepartment = areaDepartment;
         this.intencion = intencion;
         this.contrasenia=  contrasenia;
+        this.tipoUsuario = tipoUsuarios;
     }
 
     public User() {
     }        
 
+    public int getId(){
+        return id;
+    }
+    
+    public void setId(int id1){
+        this.id = id1;
+    }
+    
     public String getFull_name() {
         return full_name;
     }
@@ -62,7 +74,15 @@ public class User {
         this.contrasenia = contrasenia;
     }
     
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public void setTipoUsuario(String TipoUs) {
+        this.tipoUsuario = TipoUs;
+    }
+    
     public String toString() {
-        return "Nombre: " + full_name + ", Correo: " + email + ", Contraseña: " +  contrasenia;
+        return "Nombre: " + full_name + ", Correo: " + email + ", Tipo Usuario: " +  tipoUsuario;
     }
 }

@@ -12,7 +12,8 @@
         <result property='estado' column='state'/>        
         <result property='descripcion' column='content'/>     
         <result property='fechaCreacion' column='date_of_creation'/>
-        <collection property="palabrasClave" column="tag" ofType="String" javaType="ArrayList" notNullColumn="id"/>     
+        <result property='palabrasClave' column='tag'/>
+        <!--<collection property="palabrasClave" column="tag" ofType="String" javaType="ArrayList" notNullColumn="tag"/>     -->
     </resultMap>
     
     <select id="consultarAll" resultMap="IntentionResult">
@@ -22,9 +23,9 @@
             content,
             date_of_creation,
             title,
-            tag
+            t_palabras.tag as tag
         FROM intention
-        join t_intencion_palabra on intention.user_id = t_intencion_palabra.intention_id
+        join t_intencion_palabra on intention.id = t_intencion_palabra.intention_id
         join t_palabras on t_palabras.id = t_intencion_palabra.t_palabras_id
     </select>
     

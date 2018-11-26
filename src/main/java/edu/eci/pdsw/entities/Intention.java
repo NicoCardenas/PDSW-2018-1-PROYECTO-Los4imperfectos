@@ -12,11 +12,11 @@ public class Intention implements Serializable{
     private String descripcion;
     private Date fechaCreacion;
     private User autor;
-    private ArrayList<String> palabrasClave;
+    private /**ArrayList<String>*/ String palabrasClave;
     private ArrayList<Comment> comments;
     private String area; 
 
-    public Intention(int id, String estado, String titulo, String descripcion, Date fechaCreacion, ArrayList<Comment> comentarios, ArrayList<String> palabrasClave, User autor,String area) {
+    public Intention(int id, String estado, String titulo, String descripcion, Date fechaCreacion, ArrayList<Comment> comentarios, /*ArrayList<String>*/String palabrasClave, User autor,String area) {
         this.id = id;
         this.estado = estado;
         this.titulo = titulo;
@@ -30,9 +30,15 @@ public class Intention implements Serializable{
 
     public Intention() {
         comments = new ArrayList<>();
-        palabrasClave = new ArrayList<>();
+        //palabrasClave = new ArrayList<>();
     }
     
+    
+    public int getId(){
+        return id;
+    }
+    
+   
     public void setId(int id) {
         this.id = id;
     }
@@ -85,15 +91,14 @@ public class Intention implements Serializable{
         this.autor = autor;
     }
 
-    public ArrayList<String> getPalabrasClave() {
-        
+    public /*ArrayList<String>*/ String getPalabrasClave() {
         return palabrasClave;
     }
 
-    public void setPalabrasClave(ArrayList<String> palabrasClave) {
-        System.out.println("entro una palabra clave");
-        this.palabrasClave = palabrasClave;
-    }
+//    public void setPalabrasClave(ArrayList<String> palabrasClave) {
+//        System.out.println("entro una palabra clave");
+//        this.palabrasClave = palabrasClave;
+//    }
 
     public ArrayList<Comment> getComments() {
         return comments;

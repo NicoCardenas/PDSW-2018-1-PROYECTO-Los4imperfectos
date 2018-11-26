@@ -18,7 +18,16 @@ public class InitiativeBankServicesImpl implements InitiativeBankServices {
     @Inject
     private IntentionDAO intentionDAO;
 
-
+    @Override
+    public List<User> consultarUsuarios() throws InitiativeBankException{
+        try {
+            return userDAO.consultaUsers();
+        } catch (PersistenceException ex) {
+            throw new InitiativeBankException(ex.getMessage());
+        }
+    }
+    
+    
     @Override
     public User consultarUsuario(String mail) throws InitiativeBankException{
         try {

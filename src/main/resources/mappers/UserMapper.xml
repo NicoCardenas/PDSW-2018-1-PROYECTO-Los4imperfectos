@@ -12,7 +12,19 @@
         
         <result property="contrasenia" column="contrasenia"/>
     </resultMap>
-
+    
+    <select id="consultarUsuarios" resultMap="UserResult">
+        SELECT 
+            u.email as useremail,
+            u.full_name as full_name,
+            u.deparment_area as areaDepartment,
+            u.pass as contrasenia,
+            u.t_tipos
+        FROM usuario AS u
+        join t_intencion_palabra on intention.id = t_intencion_palabra.intention_id
+        join t_palabras on t_palabras.id = t_intencion_palabra.t_palabras_id
+    </select>
+    
     <select id='consultarUsuario' parameterType='map' resultMap='UserResult'>
         SELECT
             u.email as useremail,

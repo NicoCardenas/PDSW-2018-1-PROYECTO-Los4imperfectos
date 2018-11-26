@@ -8,6 +8,7 @@ import edu.eci.pdsw.entities.User;
 
 public interface UserMapper {
 
+    public List<User> consultarUsuarios();
     public User consultarUsuario(@Param("mail") String mail);
 
 }

@@ -6,7 +6,11 @@ public class User {
     private String areaDepartment;
     private Intention intencion;
     private String contrasenia;
-
+    
+    
+    
+    
+    
     public User(String full_name, String email, String areaDepartment, Intention intencion, String contrasenia) {
         this.full_name = full_name;
         this.email = email;

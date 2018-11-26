@@ -12,26 +12,19 @@
         <div style="margin-top: 15px"></div>        
         <p:tabView>
             <p:tab title="List all">
-                <center><h1>Lista de intenciónes</h1></center>
-                <p:dataTable id="intention_table" var="intention" value="#{intentionBean.consultAll}">	
-                    
-                    <p:column headerText="Id">
-                        <h:outputText value="#{intention.id}" />
-                    </p:column>
-                    <p:column headerText="Titulo">
-                        <h:outputText value="#{intention.titulo}" />
+                <center><h1>Lista de usuarios</h1></center>
+                <p:dataTable id="intention_table" var="intention" value="#{usuariosBean.consultAll}">	
+                   
+                    <p:column headerText="Nombre de usuario">
+                        <h:outputText value="#{user.full_name}" />
                     </p:column>
                     
-                    <p:column headerText="Fecha">
-                        <h:outputText value="#{intention.fechaCreacion}" />
-                    </p:column>
-                    
-                    <p:column headerText="Estado">
-                        <h:outputText value="#{intention.estado}" />
+                    <p:column headerText="Correo electronico">
+                        <h:outputText value="#{user.email}" />
                     </p:column>
 
-                    <p:column headerText="Descripcion">
-                        <h:outputText value="#{intention.descripcion}" />
+                    <p:column headerText="Tipo de usuario">
+                        <h:outputText value="#{user.}" />
                     </p:column>
                     
                     <p:column headerText="Palabras Claves">

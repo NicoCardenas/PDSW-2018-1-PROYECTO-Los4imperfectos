@@ -5,9 +5,11 @@ import edu.eci.pdsw.entities.Intention;
 import edu.eci.pdsw.entities.User;
 import edu.eci.pdsw.services.InitiativeBankException;
 import edu.eci.pdsw.services.InitiativeBankServices;
+import java.io.IOException;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 @SuppressWarnings("deprecation")
 @ManagedBean(name = "usuariosBean")
@@ -30,6 +32,14 @@ public class UsuariosBean extends BasePageBean{
         } catch (InitiativeBankException e) {
             throw e;
         }
+    }
+    
+    public void entrar() throws IOException{
+        FacesContext.getCurrentInstance().getExternalContext().redirect("ListaUsuarios.xhtml");
+    }
+    
+    public void salir() throws IOException{
+        FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
     }
         
     public List<Intention> getFinds() throws InitiativeBankException {

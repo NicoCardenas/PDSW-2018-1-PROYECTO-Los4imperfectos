@@ -80,7 +80,29 @@
                         </p:column>
                     </p:dataTable>
                 </h:form>
-            </p:tab>        
+            </p:tab>   
+            
+            <!-- Revisar bieeeeeeeeen cada cosa de este tab es copiado del de arriba-->
+            <p:tab title="Register">
+                <h:form id="Register_form">
+                    
+                    <img style="margin: 0px 200px" src="img/logoEci.png" alt="eciLogo" />
+                    <div style="margin: 10px"/>
+                    
+                    <h:outputText value="Title: " />
+                    <p:inputText value="#{intentionBean.title}"/>
+                    
+                    <h:outputText value="State: " />
+                    <p:inputText value="#{intentionBean.state}"/>
+                    
+                    <h:outputText value="Content: " />
+                    <p:inputText value="#{intentionBean.content}"/>
+
+                    <p:commandButton update="Register_form" value="Search" actionListener="#{intentionBean.crearIntencion()}" style="margin: 10px"/>
+                    
+                </h:form>
+            </p:tab>   
+          
         </p:tabView>        
     </h:body>
 </html>

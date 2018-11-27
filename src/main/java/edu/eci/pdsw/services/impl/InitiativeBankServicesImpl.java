@@ -54,6 +54,17 @@ public class InitiativeBankServicesImpl implements InitiativeBankServices {
             throw new InitiativeBankException(e.getMessage(), e);
         } 
     }
+
+    @Override
+    public void crearIntencion(int  idUser, String state, String content, String title) throws InitiativeBankException {
+        try {
+            
+            intentionDAO.crearIntencion(idUser, state, content, title);
+        } catch (PersistenceException e) {
+            throw new InitiativeBankException(e.getMessage(), e);
+        }
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

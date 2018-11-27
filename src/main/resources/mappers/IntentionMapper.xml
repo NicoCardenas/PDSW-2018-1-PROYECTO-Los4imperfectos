@@ -41,5 +41,9 @@
         join t_intencion_palabra on intention.user_id = t_intencion_palabra.intention_id
         join t_palabras on t_palabras.id = t_intencion_palabra.t_palabras_id
     </select> 
+     
+    <insert parameterType= "map" id= "crearIntencion">
+        INSERT INTO intencion(user_id,state,content,title) VALUES (#{idUser},#{state},#{content},#{title});
+    </insert>
     
   </mapper>

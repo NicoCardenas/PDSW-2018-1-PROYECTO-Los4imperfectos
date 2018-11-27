@@ -34,4 +34,14 @@ public class MyBatisIntentionDAO implements IntentionDAO{
             throw new PersistenceException("No existe una intencion con "+ palabra +" como palabra clave", e);
         }
     }
+
+    @Override
+    public void crearIntencion(int idUser, String state, String content, String title) throws PersistenceException {
+        try {
+            System.out.println("Entro mybatis");
+            intentionMapper.crearIntencion(idUser, state, content, title);
+        } catch (Exception e) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+    }
 }

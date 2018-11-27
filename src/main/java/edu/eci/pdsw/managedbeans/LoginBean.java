@@ -20,6 +20,7 @@ public class LoginBean extends BasePageBean{
 
     private String mail;
     private String password;
+    private User usuario;
 
     public LoginBean() {
         mail = null;
@@ -32,6 +33,7 @@ public class LoginBean extends BasePageBean{
             //System.out.println("entro: ");
             usuarioTemp = initiativeBankServices.consultarUsuario(mail);
             //System.out.println(usuarioTemp.toString());
+            setUsuario(usuarioTemp);
             if(usuarioTemp.getTipoUsuario().equals("Administrador")){
                 if (password.equals(usuarioTemp.getContrasenia())) {
                     FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
@@ -42,7 +44,7 @@ public class LoginBean extends BasePageBean{
                 }
             }else{
                 if (password.equals(usuarioTemp.getContrasenia())) {
-                    FacesContext.getCurrentInstance().getExternalContext().redirect("intencion.xhtml");
+                    FacesContext.getCurrentInstance().getExternalContext().redirect("intencion.xhtml?login="+usuario.getId());
                 } else {
                     FacesContext.getCurrentInstance().addMessage(mail, new  FacesMessage(FacesMessage.SEVERITY_ERROR, mail, mail));
                     //FacesContext.getCurrentInstance().addMessage("Contraseña incorrecta", new FacesMessage("Contraseña incorrecta o usuario incorrecto"));
@@ -81,5 +83,13 @@ public class LoginBean extends BasePageBean{
     public void setPassword(String password) {
         this.password = password;
     }    
+
+    public User getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(User usuario) {
+        this.usuario = usuario;
+    }        
      
 }

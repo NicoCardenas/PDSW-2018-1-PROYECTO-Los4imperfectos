@@ -6,4 +6,4 @@ deployment:
   staging:
     branch: master
     heroku: 
-      appname: pdsw-proyect
+      appname: pdsw-2018-1-proyecto-los-sin-n

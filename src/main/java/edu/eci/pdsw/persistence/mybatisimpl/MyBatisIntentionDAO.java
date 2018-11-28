@@ -18,7 +18,6 @@ public class MyBatisIntentionDAO implements IntentionDAO{
     @Override
     public List<Intention> consultaAll() throws PersistenceException {
         try {
-            List<Intention> listaPrueba = intentionMapper.consultarAll();
             return intentionMapper.consultarAll();
             
         } catch (Exception e) {
@@ -28,9 +27,9 @@ public class MyBatisIntentionDAO implements IntentionDAO{
 
     @Override
     public List<Intention> searchIntention(String palabra) throws PersistenceException {
-        try {
-            return intentionMapper.searchIntention(palabra);
-        } catch (Exception e) {
+        try {            
+            return intentionMapper.searchIntention("%"+palabra+"%");
+        } catch (PersistenceException e) {
             throw new PersistenceException("No existe una intencion con "+ palabra +" como palabra clave", e);
         }
     }

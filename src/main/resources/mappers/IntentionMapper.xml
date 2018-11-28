@@ -12,8 +12,9 @@
         <result property='estado' column='state'/>        
         <result property='descripcion' column='content'/>     
         <result property='fechaCreacion' column='date_of_creation'/>
-        <result property='palabrasClave' column='tag'/>
-        <!--<collection property="palabrasClave" column="tag" ofType="String" javaType="ArrayList" notNullColumn="tag"/>     -->
+        <collection property="palabrasClave" ofType="java.lang.String" javaType="list">
+            <result column="tag" />
+        </collection>
     </resultMap>
     
     <select id="consultarAll" resultMap="IntentionResult">
@@ -29,17 +30,20 @@
         join t_palabras on t_palabras.id = t_intencion_palabra.t_palabras_id
     </select>
     
-    <select id="search" parameterType="String" resultMap="IntentionResult">
+    <select id="searchIntention" parameterType="String" resultMap="IntentionResult">
         SELECT
-            intention.id,
+            intention.id as id,
             state,
             content,
             date_of_creation,
             title,
-            tag
+            t_palabras.tag as tag
         FROM intention
-        join t_intencion_palabra on intention.user_id = t_intencion_palabra.intention_id
+        join t_intencion_palabra on intention.id = t_intencion_palabra.intention_id
         join t_palabras on t_palabras.id = t_intencion_palabra.t_palabras_id
+        <if test="palabra != null">
+            WHERE tag like #{palabra}
+        </if>
     </select> 
      
     <insert parameterType= "map" id= "crearIntencion">

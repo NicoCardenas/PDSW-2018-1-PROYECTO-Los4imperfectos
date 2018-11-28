@@ -26,7 +26,7 @@ public class IntentionBean extends BasePageBean{
     private String content;
     private Date date_of_creation;
     private String title;
-    private LoginBean loginBean;
+    private LoginBean loginBean;    
 
     public IntentionBean() {
         
@@ -70,13 +70,23 @@ public class IntentionBean extends BasePageBean{
     public void salir() throws IOException{
         FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
     }
+    
+    public void redirectS() throws IOException{
+        System.out.println("entro search");
+        FacesContext.getCurrentInstance().getExternalContext().redirect("search.xhtml");
+    }
+    
+    public void redirectIn() throws IOException{
+        System.out.println("entro insert");
+        FacesContext.getCurrentInstance().getExternalContext().redirect("insert.xhtml");
+    }
 
     public String getValSearch() {
         return valSearch;
     }
 
     public void setValSearch(String valSearch) {
-        System.out.println(valSearch);
+        //System.out.println(valSearch);
         this.valSearch = valSearch;
     }
 

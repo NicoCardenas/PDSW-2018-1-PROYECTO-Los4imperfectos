@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -24,43 +29,27 @@
         </style>
     </h:head>
     <h:body>
-        <div style="margin-top: 15px"></div>
-        <h:form class="buttons" id="button_form">
-            <p:commandButton update="button_form" value="List All" actionListener="#{intentionBean.entrar()}"/>
-            <p:commandButton update="button_form" value="Search" actionListener="#{intentionBean.redirectS()}"/>
-            <p:commandButton update="button_form" value="Register" actionListener="#{intentionBean.redirectIn()}"/>
+        <h:form id="Register_form" style="margin: 10px">
+            <h:form class="buttons" id="button_form">
+                <p:commandButton update="button_form" value="List All" actionListener="#{intentionBean.entrar()}"/>
+                <p:commandButton update="button_form" value="Search" actionListener="#{intentionBean.redirectS()}"/>
+                <p:commandButton update="button_form" value="Register" actionListener="#{intentionBean.redirectIn()}"/>
+            </h:form>
+                    
+            <img style="margin: 0px 200px" src="img/logoEci.png" alt="eciLogo" />
+            <div style="margin: 10px"/>
+
+            <h:outputText value="Title: " />
+            <p:inputText value="#{intentionBean.title}"/>
+
+            <h:outputText value="State: " />
+            <p:inputText value="#{intentionBean.state}"/>
+
+            <h:outputText value="Content: " />
+            <p:inputText value="#{intentionBean.content}"/>
+
+            <p:commandButton update="Register_form" value="Search" actionListener="#{intentionBean.crearIntencion()}" style="margin: 10px"/>
+
         </h:form>
-                
-        <div class="title">
-            <img src="img/logoEci.png" alt="eciLogo" />
-            <center><h1>Lista de intenciónes</h1></center>
-        </div>
-        
-        <p:dataTable id="intention_table" var="intention" value="#{intentionBean.consultAll}" style="margin: 10px">	
-            <p:column headerText="Titulo">
-                <h:outputText value="#{intention.titulo}" />
-            </p:column>
-
-            <p:column headerText="Fecha">
-                <h:outputText value="#{intention.fechaCreacion}" />
-            </p:column>
-
-            <p:column headerText="Estado">
-                <h:outputText value="#{intention.estado}" />
-            </p:column>
-
-            <p:column headerText="Descripcion">
-                <h:outputText value="#{intention.descripcion}" />
-            </p:column>
-
-            <p:column headerText="Palabras Claves">
-                <p:dataTable id="intention_table" var="palabra" value="#{intention.palabrasClave}">
-                    <p:column headerText="Tag">
-                        <h:outputText value="#{palabra}" />
-                    </p:column>
-                </p:dataTable> 
-            </p:column>
-
-        </p:dataTable>                   
     </h:body>
 </html>

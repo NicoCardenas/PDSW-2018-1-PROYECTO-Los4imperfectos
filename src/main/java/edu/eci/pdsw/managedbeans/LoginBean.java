@@ -28,25 +28,29 @@ public class LoginBean extends BasePageBean{
     }
     
     public void autenticacion() throws IOException, InitiativeBankException {
+        FacesContext context = FacesContext.getCurrentInstance();
         User usuarioTemp = new User();
         try {
             //System.out.println("entro: ");
             usuarioTemp = initiativeBankServices.consultarUsuario(mail);
             //System.out.println(usuarioTemp.toString());
-            setUsuario(usuarioTemp);
             if(usuarioTemp.getTipoUsuario().equals("Administrador")){
                 if (password.equals(usuarioTemp.getContrasenia())) {
-                    FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
+                    context.getExternalContext().getSessionMap().put("user", usuarioTemp.getTipoUsuario());
+                    context.getExternalContext().redirect("admin.xhtml");
+                    
+                    System.out.println(FacesContext.getCurrentInstance().getClass());
                 } else {
-                    FacesContext.getCurrentInstance().addMessage(mail, new  FacesMessage(FacesMessage.SEVERITY_ERROR, mail, mail));
+                    context.addMessage(mail, new  FacesMessage(FacesMessage.SEVERITY_ERROR, mail, mail));
+                    //FacesContext.getCurrentInstance().addMessage(mail, new  FacesMessage(FacesMessage.SEVERITY_ERROR, mail, mail));
                     //FacesContext.getCurrentInstance().addMessage("Contraseña incorrecta", new FacesMessage("Contraseña incorrecta o usuario incorrecto"));
                     //FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Contraseña incorrecto.", "Ingrese la contraseña de nuevo."));
                 }
             }else{
                 if (password.equals(usuarioTemp.getContrasenia())) {
-                    FacesContext.getCurrentInstance().getExternalContext().redirect("intencion.xhtml?login="+usuario.getId());
+                    context.getExternalContext().redirect("intencion.xhtml");
                 } else {
-                    FacesContext.getCurrentInstance().addMessage(mail, new  FacesMessage(FacesMessage.SEVERITY_ERROR, mail, mail));
+                    context.addMessage(mail, new  FacesMessage(FacesMessage.SEVERITY_ERROR, mail, mail));
                     //FacesContext.getCurrentInstance().addMessage("Contraseña incorrecta", new FacesMessage("Contraseña incorrecta o usuario incorrecto"));
                     //FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Contraseña incorrecto.", "Ingrese la contraseña de nuevo."));
                 }
@@ -56,11 +60,18 @@ public class LoginBean extends BasePageBean{
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, ex.getMessage(), "Cree un usuario."));            
         }
     }
+
     
     public void logout() throws IOException {
-        FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
-        
+        FacesContext context = FacesContext.getCurrentInstance();
+     	context.getExternalContext().invalidateSession();
+        try {
+            context.getExternalContext().redirect("login.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }  
     }
+
     
     public void print(){
         System.out.println("mail ingresado: "+mail);

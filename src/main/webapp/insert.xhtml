@@ -22,33 +22,38 @@ and open the template in the editor.
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <style type="text/css">
-            .buttons {
-                margin: 10px;
-            }
-        </style>
     </h:head>
     <h:body>
         <h:form id="Register_form" style="margin: 10px">
-            <h:form class="buttons" id="button_form">
-                <p:commandButton update="button_form" value="List All" actionListener="#{intentionBean.entrar()}"/>
-                <p:commandButton update="button_form" value="Search" actionListener="#{intentionBean.redirectS()}"/>
-                <p:commandButton update="button_form" value="Register" actionListener="#{intentionBean.redirectIn()}"/>
-            </h:form>
-                    
-            <img style="margin: 0px 200px" src="img/logoEci.png" alt="eciLogo" />
-            <div style="margin: 10px"/>
+            <div style="margin: 10px;" id="Register_form">
+                <p:commandButton update="Register_form" value="List All" actionListener="#{intentionBean.entrar()}"/>
+                <p:commandButton update="Register_form" value="Search" actionListener="#{intentionBean.redirectS()}"/>
+                <p:commandButton update="Register_form" value="Register" actionListener="#{intentionBean.redirectIn()}"/>
+            </div>
+               
+            <center>
+                <img style="margin: 0px 200px" src="img/logoEci.png" alt="eciLogo" />
+            
+                <div style="margin: 10px"/>
+                <div style="margin: auto;">
+                    <div style="margin: 10px">
+                        <h:outputText value="Title: " style="color: #ffffff; margin: 5px; display: block;"/>
+                        <p:inputText value="#{intentionBean.title}"/>
+                    </div>
 
-            <h:outputText value="Title: " />
-            <p:inputText value="#{intentionBean.title}"/>
+                    <div style="margin: 10px">
+                        <h:outputText value="State: " style="color: #ffffff; margin: 5px; display: block;"/>
+                        <p:inputText value="#{intentionBean.state}"/>
+                    </div>
 
-            <h:outputText value="State: " />
-            <p:inputText value="#{intentionBean.state}"/>
-
-            <h:outputText value="Content: " />
-            <p:inputText value="#{intentionBean.content}"/>
-
-            <p:commandButton update="Register_form" value="Search" actionListener="#{intentionBean.crearIntencion()}" style="margin: 10px"/>
+                    <div style="margin: 10px">
+                        <h:outputText value="Content: " style="color: #ffffff; margin: 5px; display: block;"/>
+                        <p:inputText value="#{intentionBean.content}"/>
+                    </div>
+                </div>
+                
+                <p:commandButton update="Register_form" value="Submit" actionListener="#{intentionBean.crearIntencion()}" style="margin: 10px"/>
+            </center>            
 
         </h:form>
     </h:body>

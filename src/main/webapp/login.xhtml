@@ -9,7 +9,8 @@
     <title>Login</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/primeicons.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -25,24 +26,24 @@
     <h:form id="login_form">
         <img src="img/login.png" alt="Log Icon" />
         <br></br>
-        <p:outputLabel value="Mail " class="subtitle"/>
+        <p:messages id="messages" showDetail="true" closable="true">
+            <p:autoUpdate />
+        </p:messages>
+        <p:outputLabel value="Email " class="subtitle"><i class="pi pi-user"></i></p:outputLabel>
         <br></br>
-        <div class="input">
-            <p:inputText value="#{loginBean.mail}" required="true"/>
+        <div class="input" style="">            
+            <p:inputText placeholder="Username" value="#{loginBean.mail}" required="true"/>            
         </div>        
         <br></br>
-        <p:outputLabel value="Password " class="subtitle" />
+        <p:outputLabel value="Password " class="subtitle"><i class="pi pi-key"></i></p:outputLabel>
         <br></br>
         <div class="input">
-            <p:inputText type="password" value="#{loginBean.password}"/>
+            <p:inputText placeholder="Password" type="password" value="#{loginBean.password}"/>
         </div>        
         <br></br>
         <div class="col-12 text-center">
-            <p:commandButton class="btn btn-default" update="login_form" value="Login" actionListener="#{loginBean.autenticacion()}" />
-        </div>
-        <div class="alert alert-danger" role="alert" style="display: none">
-            This is a danger alert—check it out!
-        </div>
+            <p:commandButton class="btn btn-default" update="login_form" value="Login" actionListener="#{loginBean.autenticacion()}"/>
+        </div>        
     </h:form>
     </div>
 </h:body>    

@@ -41,18 +41,13 @@ public class LoginBean extends BasePageBean{
                     
                     System.out.println(FacesContext.getCurrentInstance().getClass());
                 } else {
-                    context.addMessage(mail, new  FacesMessage(FacesMessage.SEVERITY_ERROR, mail, mail));
-                    //FacesContext.getCurrentInstance().addMessage(mail, new  FacesMessage(FacesMessage.SEVERITY_ERROR, mail, mail));
-                    //FacesContext.getCurrentInstance().addMessage("Contraseña incorrecta", new FacesMessage("Contraseña incorrecta o usuario incorrecto"));
-                    //FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Contraseña incorrecto.", "Ingrese la contraseña de nuevo."));
+                    context.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Contraseña incorrecta o usuario incorrecto"));                    
                 }
             }else{
                 if (password.equals(usuarioTemp.getContrasenia())) {
                     context.getExternalContext().redirect("intencion.xhtml");
                 } else {
-                    context.addMessage(mail, new  FacesMessage(FacesMessage.SEVERITY_ERROR, mail, mail));
-                    //FacesContext.getCurrentInstance().addMessage("Contraseña incorrecta", new FacesMessage("Contraseña incorrecta o usuario incorrecto"));
-                    //FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Contraseña incorrecto.", "Ingrese la contraseña de nuevo."));
+                    context.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Contraseña incorrecta o usuario incorrecto"));                  
                 }
             }
             

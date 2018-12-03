@@ -10,5 +10,5 @@ public interface UserMapper {
 
     public List<User> consultarUsuarios();
     public User consultarUsuario(@Param("mail") String mail);
-
+    public List<User> consultarUsuariosTU(@Param("TipoUsuario") String TipoUsuario);
 }

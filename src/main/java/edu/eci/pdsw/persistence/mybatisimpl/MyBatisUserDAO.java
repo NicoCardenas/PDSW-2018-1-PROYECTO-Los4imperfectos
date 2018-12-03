@@ -44,4 +44,18 @@ public class MyBatisUserDAO implements UserDAO {
 
         }
     }
+    
+    @Override
+    public List<User> searchUsers(String TipoUsuario) throws PersistenceException{
+        try {
+            List<User> temp = userMapper.consultarUsuariosTU("%"+TipoUsuario+"%");
+            if (temp == null){
+                throw new PersistenceException("No existe ningun usuario con ese tipo");
+            }
+            return temp;                
+        } catch (Exception e) {
+            throw new PersistenceException("No existe ningun usuario", e);
+
+        }
+    }
 }

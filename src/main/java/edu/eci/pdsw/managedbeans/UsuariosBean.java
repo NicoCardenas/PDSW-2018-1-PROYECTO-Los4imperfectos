@@ -38,13 +38,18 @@ public class UsuariosBean extends BasePageBean{
         FacesContext.getCurrentInstance().getExternalContext().redirect("ListaUsuarios.xhtml");
     }
     
+      public void redirectS() throws IOException{
+        System.out.println("entro search");
+        FacesContext.getCurrentInstance().getExternalContext().redirect("SearchUser.xhtml");
+    }
+    
     public void salir() throws IOException{
         FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
     }
         
-    public List<Intention> getFinds() throws InitiativeBankException {
+    public List<User> getFinds() throws InitiativeBankException {
         try {
-            return initiativeBankServices.consultaIntencion(valSearch);
+            return initiativeBankServices.consultaUsuarios(valSearch);
         } catch (InitiativeBankException e) {
             throw e;
         }

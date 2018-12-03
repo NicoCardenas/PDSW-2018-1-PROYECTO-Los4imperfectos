@@ -11,5 +11,6 @@ public interface InitiativeBankServices {
     public User consultarUsuario(String mail) throws InitiativeBankException;
     public List<Intention> consultaIntencion() throws InitiativeBankException;
     public List<Intention> consultaIntencion(@Param("palabra") String palabra) throws InitiativeBankException;
+    public List<User> consultaUsuarios(@Param("TipoUsuario") String TipoUsuario) throws InitiativeBankException;
 }
 

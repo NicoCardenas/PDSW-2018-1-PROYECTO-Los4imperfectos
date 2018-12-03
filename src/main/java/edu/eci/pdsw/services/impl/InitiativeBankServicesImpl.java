@@ -66,6 +66,15 @@ public class InitiativeBankServicesImpl implements InitiativeBankServices {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    @Override
+    public List<User> consultaUsuarios(String TipoUsuario) throws InitiativeBankException {
+        try {
+            return userDAO.searchUsers(TipoUsuario);
+        } catch (PersistenceException e) {
+            throw new InitiativeBankException(e.getMessage(), e);
+        } 
+    }
+    
     
 }
 

@@ -41,6 +41,19 @@
         </if>
     </select>
     
+    <select id='consultarUsuariosTU' parameterType='String' resultMap='UserResult'>
+        SELECT
+            usuario.id as id,
+            full_name,
+            email,
+            deparment_area,
+            pass,
+            t_tipos."type"
+        FROM usuario
+        join t_tipos on usuario.t_tipos_user_id = t_tipos.user_id
+            WHERE t_tipos."type" LIKE #{TipoUsuario}
+    </select>
+    
     <delete id="deleteAll">
         delete from usuario
     </delete>

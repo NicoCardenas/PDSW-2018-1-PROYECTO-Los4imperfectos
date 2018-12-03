@@ -5,7 +5,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>usuarios</title>
+        <title>Buscar Usuarios</title>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="/css/styleIntention.css" />
@@ -16,28 +16,26 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <style type="text/css">
-            .buttons {
-                margin: 10px;
-            }
-        </style>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>        
     </h:head>
     <h:body>
-        <div style="margin-top: 15px"></div>
-        <h:form class="buttons" id="button_form">
-            <p:commandButton update="button_form" value="List All" actionListener="#{usuariosBean.entrar()}"/>
-            <p:commandButton update="button_form" value="Search" actionListener="#{usuariosBean.redirectS()}"/>
-        </h:form>
-                
-        <div class="title">
-            <img src="img/logoEci.png" alt="eciLogo" />
-            <center><h1>Lista de usuarios</h1></center>
-        </div>
-        
-        <p:dataTable id="Users_table" var="user" value="#{usuariosBean.consultAll}">	
-                   
-                    <p:column headerText="Nombre de usuario">
+        <h:form id="search_form">
+            <div style="margin: 15px;" id="button_form">
+				<p:commandButton update="search_form" value="List All" actionListener="#{usuariosBean.entrar()}"/>
+                <p:commandButton update="search_form" value="Search" actionListener="#{usuariosBean.redirectS()}"/>
+            </div>
+            <center>
+                <img style="margin: 0px 200px" src="img/logoEci.png" alt="eciLogo" />
+            </center>
+            <div style="margin: 15px;">
+                <h:outputText value="Search: " style="color: #ffffff"/>
+                <p:inputText value="#{usuariosBean.valSearch}"/>
+                <p:commandButton update="search_form" value="Search" style="margin: 10px"/>
+            </div>
+            
+            <div style="margin: 10px"/>
+            <p:dataTable id="search_table" var="user" value="#{usuariosBean.finds}" style="margin: 10px">
+					<p:column headerText="Nombre de usuario">
                         <h:outputText value="#{user.full_name}" />
                     </p:column>
                     
@@ -47,7 +45,8 @@
 
                     <p:column headerText="Tipo de usuario">
                         <h:outputText value="#{user.tipoUsuario}" />
-                    </p:column>                                       
-		</p:dataTable>                   
+                    </p:column>       
+            </p:dataTable>
+        </h:form>
     </h:body>
 </html>

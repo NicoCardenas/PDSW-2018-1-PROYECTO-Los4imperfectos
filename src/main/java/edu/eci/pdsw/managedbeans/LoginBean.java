@@ -1,22 +1,28 @@
 package edu.eci.pdsw.managedbeans;
 
+import edu.eci.pdsw.entities.UsarioFacade;
 import edu.eci.pdsw.entities.User;
 import edu.eci.pdsw.services.InitiativeBankException;
 import edu.eci.pdsw.services.InitiativeBankServices;
+import edu.eci.pdsw.services.util.LoginSession;
 import java.io.IOException;
+import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 @SuppressWarnings("deprecation")
 @ManagedBean(name = "loginBean")
 @SessionScoped  
-public class LoginBean extends BasePageBean{
+public class LoginBean extends BasePageBean {
     
     @Inject
     private InitiativeBankServices initiativeBankServices;
+    
+    private UsarioFacade EJBusuario;
 
     private String mail;
     private String password;
@@ -30,9 +36,12 @@ public class LoginBean extends BasePageBean{
     public void autenticacion() throws IOException, InitiativeBankException {
         FacesContext context = FacesContext.getCurrentInstance();
         User usuarioTemp = new User();
+        HttpSession httpSession;
         try {
             //System.out.println("entro: ");
             usuarioTemp = initiativeBankServices.consultarUsuario(mail);
+            httpSession = LoginSession.getSession();
+            httpSession.setAttribute("usuario", usuarioTemp);
             //System.out.println(usuarioTemp.toString());
             if(usuarioTemp.getTipoUsuario().equals("Administrador")){
                 if (password.equals(usuarioTemp.getContrasenia())) {
@@ -54,8 +63,14 @@ public class LoginBean extends BasePageBean{
         }catch (InitiativeBankException ex) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, ex.getMessage(), "Cree un usuario."));            
         }
+        this.usuario = usuarioTemp;
     }
 
+    public void logOut() throws IOException {
+        HttpSession hs = LoginSession.getSession();
+        hs.invalidate();
+        FacesContext.getCurrentInstance().getExternalContext().redirect("inicio.xhtml");
+    }
     
     public void logout() throws IOException {
         FacesContext context = FacesContext.getCurrentInstance();

@@ -32,9 +32,23 @@ public class IntentionBean extends BasePageBean{
     private String title;
     private String[] options;
     private List<String> selected;
+    private HttpSession httpSession;
 
-    public IntentionBean() {
-        
+    public IntentionBean() throws IOException {
+        httpSession = LoginSession.getSession();
+        User tempUser = (User) httpSession.getAttribute("usuario");
+        if (tempUser == null) {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
+        }
+    }
+    
+    public User getUser() throws IOException{
+        httpSession = LoginSession.getSession();
+        User tempUser = (User) httpSession.getAttribute("usuario");
+        if (tempUser == null) {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
+        }
+        return tempUser;
     }
     
     public List<Intention> getConsultAll() throws InitiativeBankException{
@@ -45,8 +59,7 @@ public class IntentionBean extends BasePageBean{
         }
     }        
     
-    public void crearIntencion(){    
-        HttpSession httpSession;
+    public void crearIntencion(){            
         try {
             httpSession = LoginSession.getSession();
             User tempUser = (User) httpSession.getAttribute("usuario");            
@@ -86,7 +99,15 @@ public class IntentionBean extends BasePageBean{
     }
     
     public void salir() throws IOException{
-        FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
+        HttpSession sesion = LoginSession.getSession();
+        User tempUser = (User)sesion.getAttribute("usuario");
+        if(tempUser.getTipoUsuario().equals("Administrador")){
+           FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml"); 
+        }else{
+            FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
+        }
+        sesion.invalidate();
+        sesion.removeAttribute("usuario");
     }
     
     public void redirectS() throws IOException{

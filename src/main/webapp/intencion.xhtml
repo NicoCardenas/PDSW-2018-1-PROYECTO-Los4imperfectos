@@ -29,8 +29,9 @@
             <p:commandButton update="button_form" value="List All" actionListener="#{intentionBean.entrar()}"/>
             <p:commandButton update="button_form" value="Search" actionListener="#{intentionBean.redirectS()}"/>
             <p:commandButton update="button_form" value="Register" actionListener="#{intentionBean.redirectIn()}"/>
+            <p:commandButton update="button_form" value="Back" actionListener="#{intentionBean.salir()}"/>
         </h:form>
-                
+        <h:outputText value="Usuario: #{intentionBean.user.tipoUsuario}"/>
         <div class="title">
             <img src="img/logoEci.png" alt="eciLogo" />
             <center><h1>Lista de intenciónes</h1></center>

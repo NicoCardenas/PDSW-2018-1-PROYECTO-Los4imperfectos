@@ -72,6 +72,16 @@ public class LoginBean extends BasePageBean {
         FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
     }
     
+    public void logout() throws IOException {
+        FacesContext context = FacesContext.getCurrentInstance();
+     	context.getExternalContext().invalidateSession();
+        try {
+            context.getExternalContext().redirect("login.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }  
+    }
+    
     public void print(){
         System.out.println("mail ingresado: "+mail);
         System.out.println("contraseña ingresado: "+password);

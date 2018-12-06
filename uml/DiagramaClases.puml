@@ -1,0 +1,83 @@
+@startuml
+skinparam class {
+	BackgroundColor lightcyan
+	ArrowColor teal
+	BorderColor slateblue
+}
+skinparam stereotypeCBackgroundColor YellowGreen
+
+package "entities" {
+ User - C
+ Comment -- C
+ Intention --- C
+}
+
+package "managerbeans" {
+ BasePageBean <|-- UsuariosBean
+ BasePageBean <|-- LoginBean
+ BasePageBean <|-- IntentionBean
+}
+
+package "persistence" {
+ IntentionDAO <-- InitiativeBankServicesImpl 
+ UserDAO <-- InitiativeBankServicesImpl 
+ PersistenceException --> InitiativeBankServicesImpl 
+}
+
+package "services" {
+ LoginSession ..> LoginBean
+ InitiativeBankServicesImpl ..> InitiativeBankServices 
+}
+
+class User {
+ 
+}
+
+class Comment {
+ 
+}
+
+class Intention {
+ 
+}
+
+abstract class BasePageBean {
+ 
+}
+
+class UsuariosBean {
+ 
+}
+
+class LoginBean {
+ 
+}
+
+class IntentionBean {
+ 
+}
+
+class InitiativeBankException {
+ 
+}
+
+class LoginSession {
+ 
+}
+
+interface IntentionDAO {
+ 
+}
+
+interface UserDAO {
+ 
+}
+
+interface InitiativeBankServices {
+ 
+}
+
+class InitiativeBankServicesImpl {
+ 
+}
+@enduml

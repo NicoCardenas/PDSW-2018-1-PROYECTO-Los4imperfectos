@@ -56,7 +56,7 @@ public class InitiativeBankServicesImpl implements InitiativeBankServices {
     }
 
     @Override
-    public void crearIntencion(int  idUser, String state, String content, String title) throws InitiativeBankException {
+    public void crearIntencion(int  idUser, String state, String content, String title, String[] tags) throws InitiativeBankException {
         try {
             
             intentionDAO.crearIntencion(idUser, state, content, title);
@@ -74,7 +74,15 @@ public class InitiativeBankServicesImpl implements InitiativeBankServices {
             throw new InitiativeBankException(e.getMessage(), e);
         } 
     }
-    
-    
+
+    @Override
+    public List<String> consultTags() throws InitiativeBankException {
+        try {
+            return intentionDAO.getTags();
+        } catch (PersistenceException e) {
+            throw new InitiativeBankException(e.getMessage(), e);
+        }
+    }
+
 }
 

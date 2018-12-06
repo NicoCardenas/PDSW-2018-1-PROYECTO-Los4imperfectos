@@ -14,14 +14,8 @@ and open the template in the editor.
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="/css/styleIntention.css" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="/css/primeicons.css"/>
+        <link rel="stylesheet" href="/css/primeflex.css"/>
     </h:head>
     <h:body>
         <h:form id="Register_form" style="margin: 10px">
@@ -30,31 +24,44 @@ and open the template in the editor.
                 <p:commandButton update="Register_form" value="Search" actionListener="#{intentionBean.redirectS()}"/>
                 <p:commandButton update="Register_form" value="Register" actionListener="#{intentionBean.redirectIn()}"/>
             </div>
-               
-            <center>
-                <img style="margin: 0px 200px" src="img/logoEci.png" alt="eciLogo" />
-            
-                <div style="margin: 10px"/>
-                <div style="margin: auto;">
-                    <div style="margin: 10px">
+            <h:outputText value="Usuario: #{loginBean.usuario.tipoUsuario}"/>
+            <div class="p-grid">
+
+                <div class="p-col">
+                    <div class="box"></div>
+                </div>
+                <div class="p-col">
+                    <div class="box box-stretched">
+                        <img style="margin: 0px 200px" src="img/logoEci.png" alt="eciLogo" />
                         <h:outputText value="Title: " style="color: #ffffff; margin: 5px; display: block;"/>
-                        <p:inputText value="#{intentionBean.title}"/>
-                    </div>
-
-                    <div style="margin: 10px">
-                        <h:outputText value="State: " style="color: #ffffff; margin: 5px; display: block;"/>
-                        <p:inputText value="#{intentionBean.state}"/>
-                    </div>
-
-                    <div style="margin: 10px">
+                        <p:inputText value="#{intentionBean.title}"/>                        
+                        
                         <h:outputText value="Content: " style="color: #ffffff; margin: 5px; display: block;"/>
                         <p:inputText value="#{intentionBean.content}"/>
+                        
+                        <div style="">
+                            <h:outputLabel for="menu" value="Tags: " style="color: #ffffff; margin: 5px; display: block;"/>
+                            <p:selectCheckboxMenu id="menu" value="#{intentionBean.options}" label="Options"
+                                                  filter="true" filterMatchMode="startsWith" panelStyle="width:15%" style="width: 30%;">
+                                <f:selectItems value="#{intentionBean.selected}" />
+                            </p:selectCheckboxMenu>
+                        </div>                        
+                        <p:commandButton update="Register_form" value="Submit" actionListener="#{intentionBean.crearIntencion()}" style="margin: 10px"/>
+                        
+                        <div >
+                            <p:dataList value="#{intentionBean.options}" var="opt" emptyMessage="No Tags selected" style="margin-bottom: 10px;">
+                                <f:facet name="header">
+                                    Options of the user
+                                </f:facet>
+                                #{opt}
+                            </p:dataList>
+                        </div>
                     </div>
                 </div>
-                
-                <p:commandButton update="Register_form" value="Submit" actionListener="#{intentionBean.crearIntencion()}" style="margin: 10px"/>
-            </center>            
-
+                <div class="p-col">
+                    <div class="box"></div>
+                </div>
+            </div>
         </h:form>
     </h:body>
 </html>

@@ -5,12 +5,16 @@ import edu.eci.pdsw.entities.Intention;
 import edu.eci.pdsw.entities.User;
 import edu.eci.pdsw.services.InitiativeBankException;
 import edu.eci.pdsw.services.InitiativeBankServices;
+import edu.eci.pdsw.services.util.LoginSession;
 import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 @SuppressWarnings("deprecation")
 @ManagedBean(name = "intentionBean")
@@ -26,11 +30,12 @@ public class IntentionBean extends BasePageBean{
     private String content;
     private Date date_of_creation;
     private String title;
-    private LoginBean loginBean;    
+    private String[] options;
+    private List<String> selected;
 
     public IntentionBean() {
         
-    }       
+    }
     
     public List<Intention> getConsultAll() throws InitiativeBankException{
         try {
@@ -38,29 +43,42 @@ public class IntentionBean extends BasePageBean{
         } catch (InitiativeBankException e) {
             throw e;
         }
-    }
-        
+    }        
     
-    public void crearIntencion(){
+    public void crearIntencion(){    
+        HttpSession httpSession;
         try {
-            System.out.println("entro insert");
-            User tempUser = loginBean.getUsuario();
-            System.out.println("usuario: " + tempUser);
+            httpSession = LoginSession.getSession();
+            User tempUser = (User) httpSession.getAttribute("usuario");            
             int idUser = tempUser.getId();
-            System.out.println("usuario: " + tempUser);
-            initiativeBankServices.crearIntencion(idUser, state, content, title);
+            initiativeBankServices.crearIntencion(idUser, "En espera de revisión", content, title, options);
         } catch (InitiativeBankException e) {
-             //realizar envio de error o algo 
+            System.out.println(e);
         }
     }
     
-    
+    public List<String> AllTags(){
+        try {
+            return initiativeBankServices.consultTags();            
+        } catch (InitiativeBankException e) {
+            System.out.println(e);
+            return null;
+        }
+        
+    }
+        
     public List<Intention> getFinds() throws InitiativeBankException {
         try {
             return initiativeBankServices.consultaIntencion(valSearch);
         } catch (InitiativeBankException e) {
             throw e;
         }
+    }
+    
+    public void logOut() throws IOException {
+        HttpSession hs = LoginSession.getSession();
+        hs.invalidate();
+        FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
     }
     
     public void entrar() throws IOException{
@@ -104,9 +122,7 @@ public class IntentionBean extends BasePageBean{
 
     public void setContent(String content) {
         this.content = content;
-    }
-    
-    
+    }        
           
     public Date getDate_of_creation() {
         return date_of_creation;
@@ -123,6 +139,24 @@ public class IntentionBean extends BasePageBean{
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public String[] getOptions() {
+        return options;
+    }
+
+    public void setOptions(String[] options) {
+        this.options = options;
+    }
+
+    public List<String> getSelected() {
+        selected = AllTags();
+        return selected;
+    }
+
+    public void setSelected(List<String> selected) {
+        this.selected = selected;
+    }
+    
     
     
 }

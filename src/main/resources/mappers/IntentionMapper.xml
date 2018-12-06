@@ -44,7 +44,13 @@
         <if test="palabra != null">
             WHERE tag like #{palabra}
         </if>
-    </select> 
+    </select>
+    
+    <select id="getTags" resultType="string">
+        SELECT
+            tag
+        FROM t_palabras
+    </select>
      
     <insert parameterType= "map" id= "crearIntencion">
         INSERT INTO intencion(user_id,state,content,title) VALUES (#{idUser},#{state},#{content},#{title});

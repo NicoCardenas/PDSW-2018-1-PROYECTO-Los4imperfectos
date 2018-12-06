@@ -39,8 +39,17 @@ public class MyBatisIntentionDAO implements IntentionDAO{
         try {
             System.out.println("Entro mybatis");
             intentionMapper.crearIntencion(idUser, state, content, title);
-        } catch (Exception e) {
-            throw new UnsupportedOperationException("Not supported yet.");
+        } catch (PersistenceException e) {
+            throw new PersistenceException("No existe una intencion con como palabra clave", e);
+        }
+    }
+
+    @Override
+    public List<String> getTags() throws PersistenceException{
+        try {
+            return intentionMapper.getTags();
+        } catch (PersistenceException e) {
+            throw new PersistenceException("No existe una intencion con como palabra clave", e);
         }
     }
 }

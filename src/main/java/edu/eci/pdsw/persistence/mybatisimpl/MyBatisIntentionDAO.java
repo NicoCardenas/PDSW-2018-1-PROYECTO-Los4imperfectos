@@ -14,7 +14,6 @@ public class MyBatisIntentionDAO implements IntentionDAO{
     @Inject
     IntentionMapper intentionMapper;
 	
-
     @Override
     public List<Intention> consultaAll() throws PersistenceException {
         try {
@@ -48,6 +47,16 @@ public class MyBatisIntentionDAO implements IntentionDAO{
     public List<String> getTags() throws PersistenceException{
         try {
             return intentionMapper.getTags();
+        } catch (PersistenceException e) {
+            throw new PersistenceException("No existe una intencion con como palabra clave", e);
+        }
+    }
+
+    @Override
+    public void crearIntencionTags(int tagId, int intencionId) throws PersistenceException {
+        try {
+            System.out.println("Entro mybatis");
+            intentionMapper.crearIntencionTags(tagId, intencionId);
         } catch (PersistenceException e) {
             throw new PersistenceException("No existe una intencion con como palabra clave", e);
         }

@@ -66,7 +66,7 @@ public class LoginBean extends BasePageBean {
         this.usuario = usuarioTemp;
     }
 
-    public void logOut() throws IOException {
+    public void logout() throws IOException {
         HttpSession hs = LoginSession.getSession();
         hs.invalidate();
         FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");

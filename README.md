@@ -25,7 +25,7 @@
 	* Diagrama de clases
 	![Class Diagram](http://www.plantuml.com/plantuml/png/ZL91Ri8m43oJLrZSuGK8GTAgGgfK9CIXnyLiKml7ZdOTA6hvUnqdafqsHJqXPcPtF3jPiGDoJQKpFYbJ0q4bf0PcyPbDSf2dacnZZeNLbeHMvRkJLp3PP4raBntg4BJNMZeYTGXhS7ZG3MQtP2qx9BJkMcFnS_4hQcqlJuHeigps99GefcYSSWfvwjyYzemaPgB8H66hobDY5lvjZ6jrreXP06x9WWgC_wK3WkcMvC2uzL3k4R7uyWDxRe2KvHOPuvzjgSmVPFGEWjIvHcB5dfNO6aVbm_f5BCAeZmPEdJ47SzeXdPL4tbIr5btMVmctqURnGsBTts5vTofz9_TCU6J8kaFcTijylap2traObEDqy0fVKuZaFHAaht48nZPx60xi2AGJWHzsa4wcHGwPc6BSQfHAqyJBfgBaMf5HnY6zWSHXuR_OKF0OCNx7WV6TAdhT2isngVGt)
 	* Descripción de la arquitectura
-	* [Enlace a la aplicación en Heroku](https://bancoiniciativa.herokuapp.com/)
+	* [Enlace a la aplicación en Heroku](https://bancoiniciativa.herokuapp.com)
 3. Descripción del proceso
 	*	Breve descripción de la Metodología
 	*	[Enlace a Trello](https://trello.com/b/RXskY0mL/2018-2-proypdsw-lossinnombre)

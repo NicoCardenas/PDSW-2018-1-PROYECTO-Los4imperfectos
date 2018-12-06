@@ -86,7 +86,13 @@ public class IntentionBean extends BasePageBean{
     }
     
     public void salir() throws IOException{
-        FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
+        HttpSession sesion = LoginSession.getSession();
+        User tempUser = (User)sesion.getAttribute("usuario");
+        if(tempUser.getTipoUsuario().equals("Administrador")){
+           FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml"); 
+        }else{
+            FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
+        } 
     }
     
     public void redirectS() throws IOException{

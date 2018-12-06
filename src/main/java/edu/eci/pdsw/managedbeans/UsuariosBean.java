@@ -1,15 +1,16 @@
 package edu.eci.pdsw.managedbeans;
 
 import com.google.inject.Inject;
-import edu.eci.pdsw.entities.Intention;
 import edu.eci.pdsw.entities.User;
 import edu.eci.pdsw.services.InitiativeBankException;
 import edu.eci.pdsw.services.InitiativeBankServices;
+import edu.eci.pdsw.services.util.LoginSession;
 import java.io.IOException;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 @SuppressWarnings("deprecation")
 @ManagedBean(name = "usuariosBean")
@@ -21,6 +22,7 @@ public class UsuariosBean extends BasePageBean{
     private InitiativeBankServices initiativeBankServices;
     
     private String valSearch;
+    private HttpSession sesion;
 
     public UsuariosBean() {
         
@@ -44,7 +46,13 @@ public class UsuariosBean extends BasePageBean{
     }
     
     public void salir() throws IOException{
-        FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
+        sesion = LoginSession.getSession();
+        User tempUser = (User)sesion.getAttribute("usuario");
+        if(tempUser.getTipoUsuario().equals("Administrador")){
+           FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml"); 
+        }else{
+            FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+        }  
     }
         
     public List<User> getFinds() throws InitiativeBankException {

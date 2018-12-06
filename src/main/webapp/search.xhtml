@@ -20,6 +20,7 @@
     </h:head>
     <h:body>
         <h:form id="search_form">
+            <h:outputText style="display: none" value="Usuario: #{usuariosBean.user.tipoUsuario}"/>  
             <div style="margin: 15px;" id="button_form">
                 <p:commandButton update="search_form" value="List All" actionListener="#{intentionBean.entrar()}"/>
                 <p:commandButton update="search_form" value="Search" actionListener="#{intentionBean.redirectS()}"/>

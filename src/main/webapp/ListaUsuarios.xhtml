@@ -30,7 +30,7 @@
             <p:commandButton update="button_form" value="Search" actionListener="#{usuariosBean.redirectS()}"/>
             <p:commandButton update="button_form" value="Back" actionListener="#{usuariosBean.salir()}"/>
         </h:form>
-                
+        <h:outputText value="Usuario: #{usuariosBean.user.tipoUsuario}"/>        
         <div class="title">
             <img src="img/logoEci.png" alt="eciLogo" />
             <center><h1>Lista de usuarios</h1></center>

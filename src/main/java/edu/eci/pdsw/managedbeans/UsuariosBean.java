@@ -23,10 +23,20 @@ public class UsuariosBean extends BasePageBean{
     
     private String valSearch;
     private HttpSession sesion;
+    private HttpSession httpSession;
 
     public UsuariosBean() {
         
-    }       
+    }  
+    
+    public User getUser() throws IOException{
+        httpSession = LoginSession.getSession();
+        User tempUser = (User) httpSession.getAttribute("usuario");
+        if (tempUser == null) {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
+        }
+        return tempUser;
+    }
     
     public List<User> getConsultAll() throws InitiativeBankException{
         try {

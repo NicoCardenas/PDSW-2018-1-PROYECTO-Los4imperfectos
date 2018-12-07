@@ -86,13 +86,7 @@ public class IntentionBean extends BasePageBean{
         } catch (InitiativeBankException e) {
             throw e;
         }
-    }
-    
-    public void logOut() throws IOException {
-        HttpSession hs = LoginSession.getSession();
-        hs.invalidate();
-        FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
-    }
+    }    
     
     public void entrar() throws IOException{
         FacesContext.getCurrentInstance().getExternalContext().redirect("intencion.xhtml");

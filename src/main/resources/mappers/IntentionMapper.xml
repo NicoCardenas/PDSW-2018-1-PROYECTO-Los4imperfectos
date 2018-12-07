@@ -58,7 +58,7 @@
         SELECT 
             t_palabras.id as id
         FROM t_palabras as Tp
-        WHERE tag like #{palabraClave}
+        WHERE Tp.tag like #{palabraClave}
     </select>
     
     <select id="getTags" resultType="string">

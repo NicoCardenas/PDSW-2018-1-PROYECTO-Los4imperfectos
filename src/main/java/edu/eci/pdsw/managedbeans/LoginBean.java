@@ -21,8 +21,6 @@ public class LoginBean extends BasePageBean {
     
     @Inject
     private InitiativeBankServices initiativeBankServices;
-    
-    private UsarioFacade EJBusuario;
 
     private String mail;
     private String password;
@@ -38,17 +36,13 @@ public class LoginBean extends BasePageBean {
         User usuarioTemp = new User();
         HttpSession httpSession;
         try {
-            //System.out.println("entro: ");
             usuarioTemp = initiativeBankServices.consultarUsuario(mail);
             httpSession = LoginSession.getSession();
             httpSession.setAttribute("usuario", usuarioTemp);
-            //System.out.println(usuarioTemp.toString());
             if(usuarioTemp.getTipoUsuario().equals("Administrador")){
                 if (password.equals(usuarioTemp.getContrasenia())) {
-                    context.getExternalContext().getSessionMap().put("user", usuarioTemp.getTipoUsuario());
+                    //context.getExternalContext().getSessionMap().put("user", usuarioTemp.getTipoUsuario());
                     context.getExternalContext().redirect("admin.xhtml");
-                    
-                    System.out.println(FacesContext.getCurrentInstance().getClass());
                 } else {
                     context.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Contraseña incorrecta o usuario incorrecto"));                    
                 }
@@ -65,12 +59,6 @@ public class LoginBean extends BasePageBean {
         }
         this.usuario = usuarioTemp;
     }
-
-    public void logOut() throws IOException {
-        HttpSession hs = LoginSession.getSession();
-        hs.invalidate();
-        FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
-    }
     
     public void logout() throws IOException {
         FacesContext context = FacesContext.getCurrentInstance();
@@ -80,12 +68,7 @@ public class LoginBean extends BasePageBean {
         } catch (IOException e) {
             e.printStackTrace();
         }  
-    }
-    
-    public void print(){
-        System.out.println("mail ingresado: "+mail);
-        System.out.println("contraseña ingresado: "+password);
-    }
+    }    
 
     public String getMail() {
         return mail;

@@ -22,7 +22,6 @@ public class UsuariosBean extends BasePageBean{
     private InitiativeBankServices initiativeBankServices;
     
     private String valSearch;
-    private HttpSession sesion;
     private HttpSession httpSession;
 
     public UsuariosBean() {
@@ -56,8 +55,8 @@ public class UsuariosBean extends BasePageBean{
     }
     
     public void salir() throws IOException{
-        sesion = LoginSession.getSession();
-        User tempUser = (User)sesion.getAttribute("usuario");
+        httpSession = LoginSession.getSession();
+        User tempUser = (User)httpSession.getAttribute("usuario");
         if(tempUser.getTipoUsuario().equals("Administrador")){
            FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml"); 
         }else{

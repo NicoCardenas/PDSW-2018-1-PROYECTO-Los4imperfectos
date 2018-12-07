@@ -7,77 +7,193 @@ skinparam class {
 skinparam stereotypeCBackgroundColor YellowGreen
 
 package "entities" {
- User - C
- Comment -- C
- Intention --- C
+ class User
+ class Comment
+ class Intention
 }
 
 package "managerbeans" {
- BasePageBean <|-- UsuariosBean
+ BasePageBean <|--- UsuariosBean
  BasePageBean <|-- LoginBean
- BasePageBean <|-- IntentionBean
+ BasePageBean <|-- IntentionBean 
 }
 
 package "persistence" {
- IntentionDAO <-- InitiativeBankServicesImpl 
- UserDAO <-- InitiativeBankServicesImpl 
- PersistenceException --> InitiativeBankServicesImpl 
+ UserDAO ..> PersistenceException
+ IntentionDAO ..> PersistenceException
+ MyBatisUserDAO --> UserDAO
+ MyBatisIntentionDAO --> IntentionDAO
+ UserMapper <.. MyBatisUserDAO
+ IntentionMapper <.. MyBatisIntentionDAO
 }
 
 package "services" {
- LoginSession ..> LoginBean
- InitiativeBankServicesImpl ..> InitiativeBankServices 
+ UsuariosBean ------> InitiativeBankServices : <<inject>>
+ LoginBean ------> InitiativeBankServices : <<inject>>
+ IntentionBean ------> InitiativeBankServices : <<inject>>
+ LoginSession <..... LoginBean
+ InitiativeBankServicesImpl --> InitiativeBankServices 
+ InitiativeBankException <. InitiativeBankServices
+ IntentionDAO ....> InitiativeBankServicesImpl : <<inject>>
+ UserDAO ....> InitiativeBankServicesImpl : <<inject>>
 }
 
+entities -[hidden]- services
+managerbeans -[hidden] persistence
+
 class User {
- 
+    - id : int 
+    - full_name : String
+    - email : String
+    - areaDepartment : String
+    - intencion : Intention
+    - contrasenia : String
+    - tipoUsuario : String
 }
 
 class Comment {
- 
+    - id : int
+    - content : String
+    - usuario : User
+    - intencion : Intention
 }
 
 class Intention {
- 
+    - id : int
+    - estado : String
+    - titulo : String
+    - descripcion : String
+    - fechaCreacion : Date
+    - autor : User
+    - palabrasClave : ArrayList<String>
+    - comments : ArrayList<Comment>
+    - area : String
 }
 
 abstract class BasePageBean {
- 
+    - injector : Injector
+    + init() : void
 }
 
 class UsuariosBean {
- 
+    - initiativeBankServices : InitiativeBankServices
+    - valSearch : String
+    - httpSession : HttpSession
+    + getUser() : User
+    + getConsultAll() : List<User>
+    + entrar() : void
+    + redirectS() : void
+    + salir() : void
+    + getFinds() : List<User>
 }
 
 class LoginBean {
- 
+    - initiativeBankServices : InitiativeBankServices
+    - mail : String
+    - password : String
+    - usuario : User
+    + autenticacion() : void
+    + logout() : void
 }
 
 class IntentionBean {
- 
+    - initiativeBankServices : InitiativeBankServices
+    - valSearch : String
+    - state : String
+    - content : String
+    - date_of_creation : Date
+    - title : String
+    - options : String[]
+    - selected : List<String>
+    - httpSession : HttpSession
+    + getUser() : User
+    + getConsultAll() : List<Intention>
+    + crearIntencion() : void
+    + AllTags() : List<String>
+    + getFinds() : List<Intention>
+    + entrar() : void
+    + salir() : void
+    + redirectS() : void
+    + redirectIn() : void
 }
 
 class InitiativeBankException {
- 
+    + InitiativeBankException(msg : String)
+    + InitiativeBankException(msg : String, err : Throwable)
+    + InitiativeBankException(err : Throwable)
 }
 
 class LoginSession {
- 
+    + {static} getSession() : HttpSession
+    + {static} getResquest() : HttpServletRequest
 }
 
 interface IntentionDAO {
- 
+    + consultaAll() : List<Intention> <<PersistenceException>>
+    + searchIntention(palabra : String) : List<Intention><<PersistenceException>>
+    + crearIntencion(idUser : int, state : String, content : String, title : String) : void <<PersistenceException>>
+    + getTags() : List<String> <<PersistenceException>>
 }
 
 interface UserDAO {
- 
+    + consultaUsers() : List<User> <<PersistenceException>>
+    + consultaUser(mail : String) : User <<PersistenceException>>
+    + searchUsers(TipoUsuario : String) : List<User> <<PersistenceException>>
 }
 
 interface InitiativeBankServices {
- 
+    + crearIntencion(idU : int, state : String, cont : String, title : String, tags : String[]) :  void <<InitiativeBankException>>
+    + consultarUsuarios() : List<User> <<InitiativeBankException>>
+    + consultarUsuario(mail : String) : User <<InitiativeBankException>>
+    + consultaIntencion() : List<Intention> <<InitiativeBankException>>
+    + consultaIntencion(palabra : String) : List<Intention> <<InitiativeBankException>>
+    + consultaUsuarios(TipoUsuario : String) : List<User> <<InitiativeBankException>>
+    + consultTags() : List<String> <<InitiativeBankException>>
 }
 
 class InitiativeBankServicesImpl {
- 
+    - userDAO : UserDAO
+    - intentionDAO : IntentionDAO
+    + consultarUsuarios() : List<User>
+    + consultarUsuario(String mail) : User
+    + consultaIntencion() : List<Intention>
+    + consultaIntencion(palabra : String) : List<Intention>
+    + crearIntencion(idUser:int, state:String, content:String, title:String, tags:String[]) : void
+    + consultaUsuarios(TipoUsuario : String) : List<User>
+    + consultTags() : List<String>
+}
+
+class PersistenceException {
+    + PersistenceException(msg : String)
+    + PersistenceException(msg : String, err : Throwable)
+    + PersistenceException(err : Throwable)
+}
+
+class MyBatisUserDAO {
+    - userMapper : UserMapper
+    + consultaUsers() : List<User>
+    + consultaUser(mail : String) : User
+    + searchUsers(TipoUsuario : String) : List<User>
+}
+
+class MyBatisIntentionDAO {
+    - intentionMapper : IntentionMapper
+    + consultaAll() : List<Intention>
+    + searchIntention(palabra : String) : List<Intention>
+    + crearIntencion(idUser:int, state:String, content:String, title:String) : void
+    + getTags() : List<String>
+}
+
+class IntentionMapper {
+    + consultarAll() : List<Intention>
+    + crearIntencion(idUser : int, state : String, content : String, title : String) : void
+    + searchIntention(palabra : String) : List<Intention>
+    + getTags() : List<String>
+}
+
+class UserMapper {
+    + consultarUsuarios() : List<User>
+    + consultarUsuario(mail : String) : User
+    + consultarUsuariosTU(TipoUsuario : String) : List<User>
 }
 @enduml

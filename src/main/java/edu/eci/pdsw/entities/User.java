@@ -9,10 +9,6 @@ public class User {
     private String contrasenia;
     private String tipoUsuario;
     
-    
-    
-    
-    
     public User(int id,String full_name, String email, String areaDepartment, Intention intencion, String contrasenia, String tipoUsuarios) {
         this.id = id;
         this.full_name = full_name;

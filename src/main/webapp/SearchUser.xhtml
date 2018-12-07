@@ -5,7 +5,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Buscar Usuarios</title>
+        <title>Users search</title>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="shortcut icon" type="image/png" href="img/logoEci.ico"/>
@@ -39,15 +39,15 @@
             
             <div style="margin: 10px"/>
             <p:dataTable id="search_table" var="user" value="#{usuariosBean.finds}" style="margin: 10px">
-					<p:column headerText="Nombre de usuario">
+					<p:column headerText="User name">
                         <h:outputText value="#{user.full_name}" />
                     </p:column>
                     
-                    <p:column headerText="Correo electronico">
+                    <p:column headerText="Email">
                         <h:outputText value="#{user.email}" />
                     </p:column>
 
-                    <p:column headerText="Tipo de usuario">
+                    <p:column headerText="User type">
                         <h:outputText value="#{user.tipoUsuario}" />
                     </p:column>       
             </p:dataTable>

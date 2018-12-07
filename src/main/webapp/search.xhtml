@@ -5,7 +5,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Intenciones</title>
+        <title>Intentions</title>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="shortcut icon" type="image/png" href="img/logoEci.ico"/>
@@ -39,19 +39,19 @@
             
             <div style="margin: 10px"/>
             <p:dataTable id="search_table" var="intention" value="#{intentionBean.finds}" style="margin: 10px">
-                <p:column headerText="Titulo">
+                <p:column headerText="Title">
                     <h:outputText value="#{intention.titulo}" />
                 </p:column>
 
-                <p:column headerText="Fecha">
+                <p:column headerText="Date">
                     <h:outputText value="#{intention.fechaCreacion}" />
                 </p:column>
 
-                <p:column headerText="Estado">
+                <p:column headerText="State">
                     <h:outputText value="#{intention.estado}" />
                 </p:column>
 
-                <p:column headerText="Descripcion">
+                <p:column headerText="Description">
                     <h:outputText value="#{intention.descripcion}" />
                 </p:column>
             </p:dataTable>

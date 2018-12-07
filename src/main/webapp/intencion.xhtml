@@ -5,7 +5,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Intenciones</title>
+        <title>Intentions</title>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="shortcut icon" type="image/png" href="img/logoEci.ico"/>
@@ -32,30 +32,30 @@
             <p:commandButton update="button_form" value="Register" actionListener="#{intentionBean.redirectIn()}"/>
             <p:commandButton update="button_form" value="Login Out" actionListener="#{intentionBean.salir()}"/>
         </h:form>
-        <h:outputText value="Usuario: #{intentionBean.user.tipoUsuario}"/>
+        <h:outputText value="User: #{intentionBean.user.tipoUsuario}"/>
         <div class="title">
             <img src="img/logoEci.png" alt="eciLogo" />
-            <center><h1>Lista de intenciónes</h1></center>
+            <center><h1>Intentions list</h1></center>
         </div>
         
         <p:dataTable id="intention_table" var="intention" value="#{intentionBean.consultAll}" style="margin: 10px">	
-            <p:column headerText="Titulo">
+            <p:column headerText="Title">
                 <h:outputText value="#{intention.titulo}" />
             </p:column>
 
-            <p:column headerText="Fecha">
+            <p:column headerText="Date">
                 <h:outputText value="#{intention.fechaCreacion}" />
             </p:column>
 
-            <p:column headerText="Estado">
+            <p:column headerText="State">
                 <h:outputText value="#{intention.estado}" />
             </p:column>
 
-            <p:column headerText="Descripcion">
+            <p:column headerText="Description">
                 <h:outputText value="#{intention.descripcion}" />
             </p:column>
 
-            <p:column headerText="Palabras Claves">
+            <p:column headerText="Key words">
                 <p:dataTable id="intention_table" var="palabra" value="#{intention.palabrasClave}">
                     <p:column headerText="Tag">
                         <h:outputText value="#{palabra}" />

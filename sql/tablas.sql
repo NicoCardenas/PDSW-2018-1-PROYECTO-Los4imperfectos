@@ -84,7 +84,7 @@ CREATE TABLE Intention (
     content varchar(1000)  NOT NULL,
     date_of_Creation date  NOT NULL,
     title varchar(50)  NOT NULL,
-    CONSTRAINT valite_state CHECK (state in ('En espera de revisión','En revisión','Proyecto','Solucionado')) NOT DEFERRABLE INITIALLY IMMEDIATE,
+    CONSTRAINT valite_state CHECK (state in ('propuesta','En espera de revisión','En revisión','Proyecto','Solucionado')) NOT DEFERRABLE INITIALLY IMMEDIATE,
     CONSTRAINT Intention_pk PRIMARY KEY (id)
 );
 
@@ -92,15 +92,14 @@ CREATE TABLE Intention (
 CREATE TABLE T_intencion_palabra (
     Intention_id int  NOT NULL,
     T_palabras_id int  NOT NULL,
-    T_palabras_tag varchar(50)  NOT NULL,
-    CONSTRAINT T_intencion_palabra_pk PRIMARY KEY (Intention_id,T_palabras_id,T_palabras_tag)
+    CONSTRAINT T_intencion_palabra_pk PRIMARY KEY (Intention_id,T_palabras_id)
 );
 
 -- Table: T_palabras
 CREATE TABLE T_palabras (
     id int  NOT NULL DEFAULT NEXTVAL ('auto_t_int_pal'),
     tag varchar(50)  NOT NULL,
-    CONSTRAINT T_palabras_pk PRIMARY KEY (id,tag)
+    CONSTRAINT T_palabras_pk PRIMARY KEY (id)
 );
 
 -- Table: T_tipos
@@ -145,8 +144,8 @@ ALTER TABLE T_intencion_palabra ADD CONSTRAINT T_intencion_palabra_Intention
 
 -- Reference: T_intencion_palabra_T_palabras (table: T_intencion_palabra)
 ALTER TABLE T_intencion_palabra ADD CONSTRAINT T_intencion_palabra_T_palabras
-    FOREIGN KEY (T_palabras_id, T_palabras_tag)
-    REFERENCES T_palabras (id, tag)  
+    FOREIGN KEY (T_palabras_id)
+    REFERENCES T_palabras (id)  
     NOT DEFERRABLE 
     INITIALLY IMMEDIATE
 ;
@@ -201,4 +200,4 @@ ALTER TABLE Vote ADD CONSTRAINT vote_users
 
 -- End of file.
 
-delete from usuario;
+--delete from usuario;

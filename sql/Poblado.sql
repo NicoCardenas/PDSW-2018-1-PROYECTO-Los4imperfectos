@@ -38,19 +38,19 @@ insert into usuario (full_name, email, deparment_area, pass, t_tipos_user_id)
 	
 /*Intention*/
 insert into intention (user_id, state, content, date_of_Creation, title)
-	values (5, 'En espera de revisi贸n', 'Seria bueno que quienes usamos cicla, podamos entrar por la entrada peatonal sin tener que dar la vuelta hasta la entrada vehicular y devolverse', TO_DATE('17/10/2018', 'DD/MM/YYYY'), 'Cambio de ingreso bicicletas');
+	values (5, 'En espera de revisi髇', 'Seria bueno que quienes usamos cicla, podamos entrar por la entrada peatonal sin tener que dar la vuelta hasta la entrada vehicular y devolverse', TO_DATE('17/10/2018', 'DD/MM/YYYY'), 'Cambio de ingreso bicicletas');
 insert into intention (user_id, state, content, date_of_Creation, title)
 	values (6, 'Proyecto', 'Se necesita construir un nuevo bloque con salones, para la ampliacion de espacios de clase', TO_DATE('02/09/2018', 'DD/MM/YYYY'), 'Construir nuevo bloque de salones');
 insert into intention (user_id, state, content, date_of_Creation, title)
-	values (7, 'En revisi贸n', 'Es necesario crear nuevas salas con computadores, ya que se evidencia que casi nunca hay un computador libre para hacer trabajos', TO_DATE('04/11/2018', 'DD/MM/YYYY'), 'Crear nuevas salas de computo');
+	values (7, 'En revisi髇', 'Es necesario crear nuevas salas con computadores, ya que se evidencia que casi nunca hay un computador libre para hacer trabajos', TO_DATE('04/11/2018', 'DD/MM/YYYY'), 'Crear nuevas salas de computo');
 insert into intention (user_id, state, content, date_of_Creation, title)
 	values (8, 'Solucionado', 'Necesitamos cursos pilates en la escuela, para poder mantenernos en forma, no nos gusta el gimnasio', TO_DATE('20/02/2018', 'DD/MM/YYYY'), 'Crear clase de pilates');
 insert into intention (user_id, state, content, date_of_Creation, title)
 	values (5, 'Solucionado', 'Queremos que la velocidad del internet de la escuela sea mayor, es muy lento y no sirve para hacer trabajos ni para descargar nada', TO_DATE('15/09/2018', 'DD/MM/YYYY'), 'Mejorar la velocidad del internet');
 insert into intention (user_id, state, content, date_of_Creation, title)
-	values (9, 'En espera de revisi贸n', 'Hay un salon en el bloque G, que en las ma帽anas siempre le entra todo el sol del d铆a y enceguece a la hora de poner atenci贸n a clase, afecta la visibilidad y no se puede ver nada de lo que esta escrito en el tablero', TO_DATE('05/11/2018', 'DD/MM/YYYY'), 'Mejora de Salon');
+	values (9, 'En espera de revisi髇', 'Hay un salon en el bloque G, que en las ma帽anas siempre le entra todo el sol del d铆a y enceguece a la hora de poner atenci贸n a clase, afecta la visibilidad y no se puede ver nada de lo que esta escrito en el tablero', TO_DATE('05/11/2018', 'DD/MM/YYYY'), 'Mejora de Salon');
 insert into intention (user_id, state, content, date_of_Creation, title)
-	values (5, 'En revisi贸n', 'Ser铆a genial tener una piscina para los estudiantes y que as铆 pueda haber un equipo de nataci贸n en la escuela, as铆 mismo para poder desestresarse de la carga de trabajos', TO_DATE('31/10/2018', 'DD/MM/YYYY'), 'Construir Piscina');
+	values (5, 'En revisi髇', 'Ser韆 genial tener una piscina para los estudiantes y que esa pueda haber un equipo de nataci髇 en la escuela, as铆 mismo para poder desestresarse de la carga de trabajos', TO_DATE('31/10/2018', 'DD/MM/YYYY'), 'Construir Piscina');
 
 /*Comentario*/
 insert into comentario (content, user_id, intention_id)
@@ -94,7 +94,7 @@ insert into t_palabras (tag)
 insert into t_palabras (tag)
 	values ('Movilidad');	
 insert into t_palabras (tag)
-	values ('Inclusi贸n');	
+	values ('Inclusi髇');	
 insert into t_palabras (tag)
 	values ('Ocio/Recreacion');	
 insert into t_palabras (tag)
@@ -105,17 +105,17 @@ insert into t_palabras (tag)
 	values ('Apoyo Financiero');
 	
 /*T_intencion_Palabra*/
-insert into t_intencion_palabra (intention_id, t_palabras_id, t_palabras_tag)
-	values (1, 4, 'Movilidad');
-insert into t_intencion_palabra (intention_id, t_palabras_id, t_palabras_tag)
-	values (2, 1, 'Infraestructura');
-insert into t_intencion_palabra (intention_id, t_palabras_id, t_palabras_tag)
-	values (3, 1, 'Infraestructura');
-insert into t_intencion_palabra (intention_id, t_palabras_id, t_palabras_tag)
-	values (4, 6, 'Ocio/Recreacion');
-insert into t_intencion_palabra (intention_id, t_palabras_id, t_palabras_tag)
-	values (5, 1, 'Infraestructura');
-insert into t_intencion_palabra (intention_id, t_palabras_id, t_palabras_tag)
-	values (6, 1, 'Infraestructura');
-insert into t_intencion_palabra (intention_id, t_palabras_id, t_palabras_tag)
-	values (7, 1, 'Infraestructura');
+insert into t_intencion_palabra (intention_id, t_palabras_id)
+	values (1, 4);
+insert into t_intencion_palabra (intention_id, t_palabras_id)
+	values (2, 1);
+insert into t_intencion_palabra (intention_id, t_palabras_id)
+	values (3, 1);
+insert into t_intencion_palabra (intention_id, t_palabras_id)
+	values (4, 6);
+insert into t_intencion_palabra (intention_id, t_palabras_id)
+	values (5, 1);
+insert into t_intencion_palabra (intention_id, t_palabras_id)
+	values (6, 1);
+insert into t_intencion_palabra (intention_id, t_palabras_id)
+	values (7, 1);

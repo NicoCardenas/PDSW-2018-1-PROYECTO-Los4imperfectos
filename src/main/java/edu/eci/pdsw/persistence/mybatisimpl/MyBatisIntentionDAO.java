@@ -56,7 +56,7 @@ public class MyBatisIntentionDAO implements IntentionDAO{
     @Override
     public int consultarUltimaIntencion(int idUsuario, String titulo) throws PersistenceException {
         try {
-            return intentionMapper.consultarUltimaIntencion(idUsuario, titulo);
+            return intentionMapper.consultarUltimaIntencion(idUsuario, "%"+titulo+"%");
         } catch (PersistenceException e) {
             throw new PersistenceException(e.getMessage(), e);
         }
@@ -65,7 +65,7 @@ public class MyBatisIntentionDAO implements IntentionDAO{
     @Override
     public int consultarIdPalabra(String palabraClave) throws PersistenceException {
         try {
-            return intentionMapper.consultarIdPalabra(palabraClave);
+            return intentionMapper.consultarIdPalabra("%"+palabraClave+"%");
         } catch (PersistenceException e) {
             throw new PersistenceException(e.getMessage(), e);
         }

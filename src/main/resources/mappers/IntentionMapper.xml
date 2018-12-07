@@ -46,19 +46,19 @@
         </if>
     </select>
     
-        <select id="consultarUltimaIntencion" parameterType="map" resultMap="IntentionResult">
+        <select id="consultarUltimaIntencion" parameterType="map" resultType="int">
             SELECT 
                 intention.id as id
             FROM intention
-            WHERE user_id = #{idUsuario} and 
-        	title like #{titulo}
+            WHERE user_id = #{idUsuario} and
+            title like #{titulo}
     </select>
     
-        <select id="consultarIdPalabra" parameterType="String" resultMap="IntentionResult">
+        <select id="consultarIdPalabra" parameterType="String" resultType="int">
         SELECT 
             t_palabras.id as id
-        FROM t_palabras as Tp
-        WHERE Tp.tag like #{palabraClave}
+        FROM t_palabras
+        WHERE t_palabras.tag like #{palabraClave}
     </select>
     
     <select id="getTags" resultType="string">

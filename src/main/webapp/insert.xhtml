@@ -23,6 +23,7 @@ and open the template in the editor.
                 <p:commandButton update="Register_form" value="List All" actionListener="#{intentionBean.entrar()}"/>
                 <p:commandButton update="Register_form" value="Search" actionListener="#{intentionBean.redirectS()}"/>
                 <p:commandButton update="Register_form" value="Register" actionListener="#{intentionBean.redirectIn()}"/>
+                <p:commandButton update="button_form" value="Login Out" actionListener="#{intentionBean.salir()}"/>
             </div>
             <h:outputText value="Usuario: #{loginBean.usuario.tipoUsuario}"/>
             <div class="p-grid">

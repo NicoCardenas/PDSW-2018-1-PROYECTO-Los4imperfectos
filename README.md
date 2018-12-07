@@ -19,7 +19,23 @@
 ### Descripción
 1. **Descripción del proyecto**
 	* Descripción general
+		* El proyecto consiste en la elaboración de un aplicativa para el registro y seguimiento de las intenciones propuestas por los usuarios de la Escuela Colombiana de Ingeniería Julio Garavito. 
 	* Imágenes de funciones
+		* ![pagina de inicio](https://github.com/NicoCardenas/PDSW-2018-1-PROYECTO-LosSinNombre/image/pagina_saludo.png "pagina de inicio")
+		* ![Login](https://github.com/NicoCardenas/PDSW-2018-1-PROYECTO-LosSinNombre/image/login.png "Login")
+		* ![consulta usuarios](https://github.com/NicoCardenas/PDSW-2018-1-PROYECTO-LosSinNombre/image/consultaUser.png "pagina de consulta de usuarios")
+		* ![consulta usuario](https://github.com/NicoCardenas/PDSW-2018-1-PROYECTO-LosSinNombre/image/consultaUserP.png "pagina de consulta de usuarios")
+		* ![consulta intenciones](https://github.com/NicoCardenas/PDSW-2018-1-PROYECTO-LosSinNombre/image/listIntencion.png "pagina de consulta de intenciones")
+		* ![consulta intencion](https://github.com/NicoCardenas/PDSW-2018-1-PROYECTO-LosSinNombre/image/buscarIntencion.png "pagina de consulta de intencion")
+		* ![registro intenciones](https://github.com/NicoCardenas/PDSW-2018-1-PROYECTO-LosSinNombre/image/registrarIntencion.png "pagina de registro de intenciones")
+
+|Usuario| Contraseña | Rol |
+|--|--|--|
+| sudo@escuelaing.edu.co | root | Administrador |
+| juan.mora@mail.escuelaing.edu.co | password | Personal PMO - ODI |
+| diana.torres@mail.escuelaing.edu.co | password | Proponente de iniciativa o idea de proyecto |
+| suly.jaimes@mail.escuelaing.edu.co | password | Usuarios de consulta |
+
 2.  **Arquitectura y Diseño detallado**
 	* Modelo E-R
 	![Class Diagram](http://www.plantuml.com/plantuml/png/TLB1RXen43t7Ns5n2bL1q8fB54LfaLgXNdf8A_Mq6dOdOE6rL-FPegZglySsEDWHveBtlV5xRsRyw1Y8nruBTr1c089UjXgSa__4pLTe3pkoe-dMLbkIMktstBw04JTVYEpnX3A2zhMMEgGJuZGmRlM8udycwnW9BRyCk7ul_0UrjiVlX6Y4OBj3tYFv15BASvfVRWHIDaFMjaV3xy3VbeEfU6fO3LPEbXCvcyd9OZx_C4aQKgH3IOUx9PUep4kAZM5_LjOaSXOabXVvEyaA3UQ5GQiqgbULdXN5P9qEJyq06hO4JehRjxAF6JwLS_-b0jLwAk52d0Pt6jXvvFVtFtyyFCZH8JMgy_R-MYJ2ylpdNw1s3tIxMap3i8iDbHBfjepWywXrOw3FDJwjLjD8OWzANoCw780u3AC1GYZzOyNW_O-Mkepw7AYOuvlFSMwlAJgIb-nX8zU3Hqoh0pQTSk7VmrjhDOB9zLKQ-PjwpWPRTs6IRRxYkdbhetRHTjbSqLKzLUczILpTkgxl6BXSuhIITRb8OJjWREnpqn92zBsBKEHOiSOhYvtvtoLoziZhcHbsbHTwxVaNGgdVJMMPUT4bJBbOiLSTobPHgr4yekd6Nhy2)
@@ -29,6 +45,7 @@
 	* [Enlace a la aplicación en Heroku](https://bancoiniciativa.herokuapp.com)
 3. Descripción del proceso
 	*	Breve descripción de la Metodología
+		*	Es implemento la metodología de scrum, con los principios de las técnicas agiles para el desarrollo del proyecto, constantemente los integrantes rotaron de roles y se programaba por parejas.
 	*	[Enlace a Trello](https://trello.com/b/RXskY0mL/2018-2-proypdsw-lossinnombre)
 	*	Release-burndown chart
 

@@ -13,4 +13,7 @@ public interface IntentionMapper {
     public void crearIntencionTags(@Param ("tagId") int tagId, @Param ("tagId") int intencionId) throws PersistenceException;
     public List<Intention> searchIntention(@Param("palabra") String palabra) throws PersistenceException;
     public List<String> getTags() throws PersistenceException;
+    public int consultarUltimaIntencion(@Param("idUsuario") int idUsuario, @Param("titulo") String titulo) throws PersistenceException;
+    public int consultarIdPalabra(@Param("palabraClave") String palabraClave) throws PersistenceException;
+    public void crearIntencionPalabra(@Param("idIntencion") int idIntencion, @Param("idPalabra") int idPalabra) throws PersistenceException;
 }

@@ -35,14 +35,14 @@ and open the template in the editor.
                     <div class="box box-stretched">
                         <img style="margin: 0px 200px" src="img/logoEci.png" alt="eciLogo" />
                         <h:outputText value="Title: " style="color: #ffffff; margin: 5px; display: block;"/>
-                        <p:inputText value="#{intentionBean.title}"/>                        
+                        <p:inputText value="#{intentionBean.title}" required="true" style="color: #000"/>                        
                         
                         <h:outputText value="Content: " style="color: #ffffff; margin: 5px; display: block;"/>
-                        <p:inputText value="#{intentionBean.content}"/>
+                        <p:inputText value="#{intentionBean.content}" required="true" style="color: #000"/>
                         
                         <div style="">
                             <h:outputLabel for="menu" value="Tags: " style="color: #ffffff; margin: 5px; display: block;"/>
-                            <p:selectCheckboxMenu id="menu" value="#{intentionBean.options}" label="Options"
+                            <p:selectCheckboxMenu id="menu" value="#{intentionBean.options}" label="Options" required="true"
                                                   filter="true" filterMatchMode="startsWith" panelStyle="width:15%" style="width: 30%;">
                                 <f:selectItems value="#{intentionBean.selected}" />
                             </p:selectCheckboxMenu>

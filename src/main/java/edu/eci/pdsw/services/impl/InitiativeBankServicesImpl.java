@@ -59,12 +59,9 @@ public class InitiativeBankServicesImpl implements InitiativeBankServices {
     public void crearIntencion(int  idUser, String state, String content, String title, String[] tags) throws InitiativeBankException {
         try {            
             intentionDAO.crearIntencion(idUser, state, content, title);
-            for (String tag : tags) {
-                intentionDAO.crearIntencionTags(idUser, idUser);
-            }
         } catch (PersistenceException e) {
             throw new InitiativeBankException(e.getMessage(), e);
-        }        
+        }
     }
     
     @Override
@@ -80,6 +77,32 @@ public class InitiativeBankServicesImpl implements InitiativeBankServices {
     public List<String> consultTags() throws InitiativeBankException {
         try {
             return intentionDAO.getTags();
+        } catch (PersistenceException e) {
+            throw new InitiativeBankException(e.getMessage(), e);
+        }
+    }
+	
+	@Override
+    public int consultarUltimaIntencion(int idUsuario, String titulo) throws InitiativeBankException {
+        try {
+            return intentionDAO.consultarUltimaIntencion(idUsuario, titulo);
+        } catch (PersistenceException e) {
+            throw new InitiativeBankException(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public int consultarIdPalabra(String palabraClave) throws InitiativeBankException {
+        try {
+            return intentionDAO.consultarIdPalabra(palabraClave);
+        } catch (PersistenceException e) {
+            throw new InitiativeBankException(e.getMessage(), e);
+        }
+    }
+    @Override
+    public void crearIntencionPalabra(int idIntencion, int idPalabra) throws InitiativeBankException {
+        try {
+            intentionDAO.crearIntencionPalabra(idIntencion, idPalabra);
         } catch (PersistenceException e) {
             throw new InitiativeBankException(e.getMessage(), e);
         }

@@ -45,6 +45,21 @@
             WHERE tag like #{palabra}
         </if>
     </select>
+	
+	<select id="consultarUltimaIntencion" parameterType="map" resultType="int">
+		SELECT 
+			intention.id as id
+		FROM intention
+		WHERE user_id = #{idUsuario} and
+		title like #{titulo}
+    </select>
+    
+	<select id="consultarIdPalabra" parameterType="String" resultType="int">
+        SELECT 
+            t_palabras.id as id
+        FROM t_palabras
+        WHERE t_palabras.tag like #{palabraClave}
+    </select>
     
     <select id="getTags" resultType="string">
         SELECT
@@ -53,7 +68,11 @@
     </select>
      
     <insert parameterType= "map" id= "crearIntencion">
-        INSERT INTO intencion(user_id,state,content,title) VALUES (#{idUser},#{state},#{content},#{title});
+        INSERT INTO intention(user_id,state,content,title) VALUES (#{idUser},#{state},#{content},#{title});
+    </insert>
+	
+    <insert parameterType= "map" id= "crearIntencionPalabra">
+        INSERT INTO t_intencion_palabra(intention_id, t_palabras_id) VALUES (#{idIntencion}, #{idPalabra});
     </insert>
     
   </mapper>

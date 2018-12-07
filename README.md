@@ -21,13 +21,15 @@
 	* Descripción general
 		* El proyecto consiste en la elaboración de un aplicativa para el registro y seguimiento de las intenciones propuestas por los usuarios de la Escuela Colombiana de Ingeniería Julio Garavito. 
 	* Imágenes de funciones
-		* ![pagina de inicio](https://github.com/NicoCardenas/PDSW-2018-1-PROYECTO-LosSinNombre/image/pagina_saludo.png "pagina de inicio")
-		* ![Login](https://github.com/NicoCardenas/PDSW-2018-1-PROYECTO-LosSinNombre/image/login.png "Login")
-		* ![consulta usuarios](https://github.com/NicoCardenas/PDSW-2018-1-PROYECTO-LosSinNombre/image/consultaUser.png "pagina de consulta de usuarios")
-		* ![consulta usuario](https://github.com/NicoCardenas/PDSW-2018-1-PROYECTO-LosSinNombre/image/consultaUserP.png "pagina de consulta de usuarios")
-		* ![consulta intenciones](https://github.com/NicoCardenas/PDSW-2018-1-PROYECTO-LosSinNombre/image/listIntencion.png "pagina de consulta de intenciones")
-		* ![consulta intencion](https://github.com/NicoCardenas/PDSW-2018-1-PROYECTO-LosSinNombre/image/buscarIntencion.png "pagina de consulta de intencion")
-		* ![registro intenciones](https://github.com/NicoCardenas/PDSW-2018-1-PROYECTO-LosSinNombre/image/registrarIntencion.png "pagina de registro de intenciones")
+		* pagina de inicio![pagina de inicio](https://raw.githubusercontent.com/NicoCardenas/PDSW-2018-1-PROYECTO-LosSinNombre/master/image/pagina_saludo.PNG "pagina de inicio")
+		* pagina de login![Login](https://raw.githubusercontent.com/NicoCardenas/PDSW-2018-1-PROYECTO-LosSinNombre/master/image/login.PNG "Login")
+		* pagina del administrador![pagina admin](https://raw.githubusercontent.com/NicoCardenas/PDSW-2018-1-PROYECTO-LosSinNombre/master/image/admin.PNG "pagina del administrador")
+		* consulta todos los usuario registrados![consulta usuarios](https://raw.githubusercontent.com/NicoCardenas/PDSW-2018-1-PROYECTO-LosSinNombre/master/image/consultaUser.PNG "pagina de consulta de usuarios")
+		* consulta particualar de un usuario![consulta usuario](https://raw.githubusercontent.com/NicoCardenas/PDSW-2018-1-PROYECTO-LosSinNombre/master/image/consultaUserP.PNG "pagina de consulta de usuarios")
+		* listar todas las intenciones registradas![consulta intenciones](https://raw.githubusercontent.com/NicoCardenas/PDSW-2018-1-PROYECTO-LosSinNombre/master/image/listIntencion.PNG "pagina de consulta de intenciones")
+		* consulta especifica de una intencion por palabra clave![consulta intencion](https://raw.githubusercontent.com/NicoCardenas/PDSW-2018-1-PROYECTO-LosSinNombre/master/image/buscarIntencion.PNG "pagina de consulta de intencion")
+		* registrar una intencion![registro intenciones](https://raw.githubusercontent.com/NicoCardenas/PDSW-2018-1-PROYECTO-LosSinNombre/master/image/registrarIntencion.PNG "pagina de registro de intenciones")
+> Usuarios con diferente rol
 
 |Usuario| Contraseña | Rol |
 |--|--|--|

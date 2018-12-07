@@ -62,9 +62,15 @@ public class IntentionBean extends BasePageBean{
     public void crearIntencion(){            
         try {
             httpSession = LoginSession.getSession();
-            User tempUser = (User) httpSession.getAttribute("usuario");            
-            int idUser = tempUser.getId();
+            User tempUser = (User) httpSession.getAttribute("usuario"); 
+            int idUser = tempUser.getId();        
             initiativeBankServices.crearIntencion(idUser, "En espera de revisión", content, title, options);
+            int idIntencion = initiativeBankServices.consultarUltimaIntencion(idUser, title);
+            for(int i = 1; i <= options.length; i++)
+            {
+                int idPalabra = initiativeBankServices.consultarIdPalabra(options[i-1]);   
+                initiativeBankServices.crearIntencionPalabra(idIntencion, idPalabra);   
+            }
         } catch (InitiativeBankException e) {
             System.out.println(e);
         }

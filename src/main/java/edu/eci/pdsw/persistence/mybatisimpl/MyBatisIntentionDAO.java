@@ -52,4 +52,30 @@ public class MyBatisIntentionDAO implements IntentionDAO{
             throw new PersistenceException("No existe una intencion con como palabra clave", e);
         }
     }
+
+    @Override
+    public int consultarUltimaIntencion(int idUsuario, String titulo) throws PersistenceException {
+        try {
+            return intentionMapper.consultarUltimaIntencion(idUsuario, titulo);
+        } catch (PersistenceException e) {
+            throw new PersistenceException(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public int consultarIdPalabra(String palabraClave) throws PersistenceException {
+        try {
+            return intentionMapper.consultarIdPalabra(palabraClave);
+        } catch (PersistenceException e) {
+            throw new PersistenceException(e.getMessage(), e);
+        }
+    }
+    @Override
+    public void crearIntencionPalabra(int idIntencion, int idPalabra) throws PersistenceException {
+        try {
+            intentionMapper.crearIntencionPalabra(idIntencion, idPalabra);
+        } catch (PersistenceException e) {
+            throw new PersistenceException(e.getMessage(), e);
+        }
+    }
 }

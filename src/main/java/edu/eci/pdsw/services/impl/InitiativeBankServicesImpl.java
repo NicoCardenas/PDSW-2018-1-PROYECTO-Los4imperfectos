@@ -63,7 +63,6 @@ public class InitiativeBankServicesImpl implements InitiativeBankServices {
         } catch (PersistenceException e) {
             throw new InitiativeBankException(e.getMessage(), e);
         }
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     @Override
@@ -79,6 +78,32 @@ public class InitiativeBankServicesImpl implements InitiativeBankServices {
     public List<String> consultTags() throws InitiativeBankException {
         try {
             return intentionDAO.getTags();
+        } catch (PersistenceException e) {
+            throw new InitiativeBankException(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public int consultarUltimaIntencion(int idUsuario, String titulo) throws InitiativeBankException {
+        try {
+            return intentionDAO.consultarUltimaIntencion(idUsuario, titulo);
+        } catch (PersistenceException e) {
+            throw new InitiativeBankException(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public int consultarIdPalabra(String palabraClave) throws InitiativeBankException {
+        try {
+            return intentionDAO.consultarIdPalabra(palabraClave);
+        } catch (PersistenceException e) {
+            throw new InitiativeBankException(e.getMessage(), e);
+        }
+    }
+    @Override
+    public void crearIntencionPalabra(int idIntencion, int idPalabra) throws InitiativeBankException {
+        try {
+            intentionDAO.crearIntencionPalabra(idIntencion, idPalabra);
         } catch (PersistenceException e) {
             throw new InitiativeBankException(e.getMessage(), e);
         }

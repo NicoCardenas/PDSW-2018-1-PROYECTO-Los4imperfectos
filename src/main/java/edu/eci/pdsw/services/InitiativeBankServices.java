@@ -13,5 +13,9 @@ public interface InitiativeBankServices {
     public List<Intention> consultaIntencion(@Param("palabra") String palabra) throws InitiativeBankException;
     public List<User> consultaUsuarios(@Param("TipoUsuario") String TipoUsuario) throws InitiativeBankException;
     public List<String> consultTags() throws InitiativeBankException;
+    public int consultarUltimaIntencion(@Param("idUsuario") int idUsuario, @Param("titulo") String titulo) throws InitiativeBankException;
+    public int consultarIdPalabra(@Param("palabraClave") String palabraClave) throws InitiativeBankException;
+    public void crearIntencionPalabra(@Param("idIntencion") int idIntencion, @Param("idPalabra") int idPalabra) throws InitiativeBankException;
+    
 }
 
